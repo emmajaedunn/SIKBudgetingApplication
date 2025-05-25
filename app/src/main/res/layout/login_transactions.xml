@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/white"
+    android:textAlignment="viewEnd">
+
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="205dp"
+        android:layout_height="142dp"
+        android:layout_marginTop="40dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/siklogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <!-- Transactions Page Heading -->
+    <TextView
+        android:id="@+id/transactionspageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Transactions Page"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logoImage"
+        tools:ignore="HardcodedText" />
+
+    <!-- Subtext -->
+    <TextView
+        android:id="@+id/tagline"
+        android:layout_width="290dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:text="Easily log and track all your income and expenses."
+        android:textAlignment="center"
+        android:textColor="@color/material_dynamic_neutral_variant20"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.537"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/transactionspageText"
+        tools:ignore="HardcodedText" />
+
+    <!-- Transactions Page Image -->
+    <ImageView
+        android:id="@+id/transactionpageImage"
+        android:layout_width="199dp"
+        android:layout_height="307dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/transactionpage"
+        app:layout_constraintBottom_toTopOf="@+id/nextButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@+id/tagline"
+        app:layout_constraintVertical_bias="0.333"
+        tools:ignore="ContentDescription" />
+
+    <!-- Next Button -->
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="370dp"
+        android:layout_height="54dp"
+        android:backgroundTint="#0C77B7"
+        android:text="Next"
+        android:textSize="18sp"
+        app:cornerRadius="20dp"
+        tools:ignore="HardcodedText,MissingConstraints"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="636dp" />
+
+    <!-- Skip Button -->
+    <Button
+        android:id="@+id/skipButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="#FDFDFD"
+        android:clickable="true"
+        android:focusable="true"
+        android:shadowColor="#FDFDFD"
+        android:text="Skip"
+        android:textColor="#9A8B8E99"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText,KeyboardInaccessibleWidget" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
