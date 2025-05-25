@@ -5,129 +5,167 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAFAFA"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
     tools:context=".MainActivity">
 
+    <!-- Logo -->
     <ImageView
-        android:id="@+id/logoImageView"
-        android:layout_width="251dp"
-        android:layout_height="229dp"
-        android:layout_marginTop="25dp"
+        android:id="@+id/logoImage"
+        android:layout_width="301dp"
+        android:layout_height="216dp"
+        android:layout_marginTop="60dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sik_icon"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/sloganTextView"
+        android:id="@+id/tagline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Zero-Based Budgeting Made Simple"
-        android:textColor="#525252"
-        android:textSize="14sp"
+        android:textColor="@color/material_dynamic_neutral_variant20"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/logoImage" />
 
+    <!-- Login Card -->
     <androidx.cardview.widget.CardView
+        android:id="@+id/loginCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="2dp"
+        android:layout_margin="24dp"
+        android:padding="16dp"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sloganTextView">
+        app:layout_constraintTop_toBottomOf="@id/tagline">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="24dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
+            <!-- Login Heading -->
+
+            <!-- Email Heading -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="20sp"
                 android:text="Login to your account"
-                android:textColor="#262626"
-                android:textSize="20sp" />
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:textStyle="normal"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="22sp"
+                android:layout_marginBottom="8dp"
                 android:text="Email"
-                android:textColor="#404040"
-                android:textSize="14sp" />
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText" />
 
+            <!-- Email Input -->
             <EditText
-                android:id="@+id/usernameEditText"
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:layout_marginTop="8dp"
-                android:drawableStart="@drawable/person_ic"
-                android:drawablePadding="12dp"
-                android:hint="Enter your username"
-                android:inputType="text"
-                android:paddingStart="12dp"
-                android:textColorHint="#ADAEBC" />
+                android:id="@+id/emailInput"
+                android:layout_width="321dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/edittext_background"
+                android:drawableStart="@drawable/icon_email"
+                android:hint="Enter your email"
+                android:inputType="textEmailAddress"
+                android:outlineProvider="none"
+                android:padding="5dp"
+                android:shadowColor="#C3B0B0"
+                android:textDirection="firstStrong"
+                android:textIsSelectable="true"
+                tools:ignore="Autofill,HardcodedText,TextFields" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="22sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="8dp"
                 android:text="Password"
-                android:textColor="#404040"
-                android:textSize="14sp" />
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText" />
 
+            <!-- Password Input -->
             <EditText
-                android:id="@+id/passwordEditText"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="8dp"
-                android:drawableStart="@drawable/lock_ic"
-                android:drawablePadding="12dp"
-                android:hint="Enter your password"
+                android:id="@+id/passwordInput"
+                android:layout_width="323dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/edittext_background"
+                android:drawableStart="@drawable/icon_password"
+                android:hint=" Enter your password"
                 android:inputType="textPassword"
-                android:paddingStart="12dp"
-                android:textColorHint="#ADAEBC" />
+                android:outlineProvider="none"
+                android:padding="5dp"
+                android:shadowColor="#C3B0B0"
+                android:textAlignment="5"
+                android:textDirection="firstStrong"
+                android:textIsSelectable="true"
+                tools:ignore="Autofill,HardcodedText,TextFields" />
 
+            <!-- Sign in Button -->
             <Button
                 android:id="@+id/loginButton"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="24dp"
-                android:text="Login"
-                android:textColor="#FFFFFF" />
-
+                android:layout_height="60dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="#0C77B7"
+                android:text="Sign In"
+                android:textSize="18sp"
+                app:cornerRadius="20dp"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/forgotPasswordTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/forgot_password"
-        android:textColor="#525252"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/signUpTextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <!-- Forgot Password -->
+
+    <!-- Sign up -->
 
     <TextView
-        android:id="@+id/signUpTextView"
+        android:id="@+id/forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:text="@string/sign_up_prompt"
-        android:textColor="#525252"
+        android:layout_marginTop="36dp"
+        android:text="Forgot your password?"
+        android:textColor="@color/black"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginCard"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/signupText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Don't have an account? Sign up"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/forgotPassword"
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
