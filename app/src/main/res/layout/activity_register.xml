@@ -80,7 +80,7 @@
 
             <!-- Name Input -->
             <EditText
-                android:id="@+id/nameInput"
+                android:id="@+id/nameEditText"
                 android:layout_width="321dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="20dp"
@@ -88,6 +88,7 @@
                 android:drawableStart="@drawable/icon_user"
                 android:drawablePadding="5dp"
                 android:hint="Enter your name"
+                android:inputType="textPersonName"
                 android:outlineProvider="none"
                 android:padding="5dp"
                 android:shadowColor="#C3B0B0"
@@ -108,7 +109,7 @@
 
             <!-- Username Input -->
             <EditText
-                android:id="@+id/usernameInput"
+                android:id="@+id/usernameEditText"
                 android:layout_width="321dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="20dp"
@@ -136,7 +137,7 @@
 
             <!-- Email Input -->
             <EditText
-                android:id="@+id/emailInput"
+                android:id="@+id/emailEditText"
                 android:layout_width="321dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="20dp"
@@ -144,6 +145,7 @@
                 android:drawableStart="@drawable/icon_email"
                 android:drawablePadding="5dp"
                 android:hint="Enter your email"
+                android:inputType="textEmailAddress"
                 android:outlineProvider="none"
                 android:padding="5dp"
                 android:shadowColor="#C3B0B0"
@@ -162,9 +164,9 @@
                 android:textSize="16sp"
                 tools:ignore="HardcodedText" />
 
-            <!-- Username Input -->
+            <!-- Password Input -->
             <EditText
-                android:id="@+id/passwordInput"
+                android:id="@+id/passwordEditText"
                 android:layout_width="321dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="20dp"
@@ -172,6 +174,7 @@
                 android:drawableStart="@drawable/icon_password"
                 android:drawablePadding="5dp"
                 android:hint="Enter your password"
+                android:inputType="textPassword"
                 android:outlineProvider="none"
                 android:padding="5dp"
                 android:shadowColor="#C3B0B0"
@@ -194,15 +197,12 @@
     </androidx.cardview.widget.CardView>
 
     <!-- Forgot Password -->
-
-    <!-- Sign in -->
-
     <TextView
-        android:id="@+id/forgotPassword"
+        android:id="@+id/forgotPasswordTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Forgot your password?"
+        android:text="@string/forgot_password"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -211,16 +211,16 @@
         tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/signupText"
+        android:id="@+id/loginTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Have an account? Login"
+        android:layout_marginTop="20dp"
+        android:text="@string/have_Account"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/forgotPassword"
+        app:layout_constraintTop_toBottomOf="@id/forgotPasswordTextView"
         tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
