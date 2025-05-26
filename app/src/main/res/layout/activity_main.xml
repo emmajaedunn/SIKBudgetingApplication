@@ -80,7 +80,7 @@
 
             <!-- Email Input -->
             <EditText
-                android:id="@+id/emailInput"
+                android:id="@+id/usernameEditText"
                 android:layout_width="321dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="20dp"
@@ -108,7 +108,7 @@
 
             <!-- Password Input -->
             <EditText
-                android:id="@+id/passwordInput"
+                android:id="@+id/passwordEditText"
                 android:layout_width="323dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="20dp"
@@ -138,16 +138,12 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Forgot Password -->
-
-    <!-- Sign up -->
-
     <TextView
-        android:id="@+id/forgotPassword"
+        android:id="@+id/forgotPasswordTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Forgot your password?"
+        android:text="@string/forgot_password"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -156,16 +152,16 @@
         tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/signupText"
+        android:id="@+id/signUpTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Don't have an account? Sign up"
+        android:text="@string/sign_up_prompt"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/forgotPassword"
+        app:layout_constraintTop_toBottomOf="@id/forgotPasswordTextView"
         tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
