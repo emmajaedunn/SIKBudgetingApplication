@@ -11,9 +11,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/sik_icon_round"
+        android:label="@string/SIKBudgeting"
+        android:roundIcon="@mipmap/sik_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ST10298850PROG7313P2LP"
         tools:targetApi="31">

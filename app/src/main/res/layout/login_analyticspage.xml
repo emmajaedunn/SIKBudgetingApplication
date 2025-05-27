@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:backgroundTint="@color/white"
     android:textAlignment="viewEnd">
 
@@ -14,7 +15,7 @@
         android:layout_height="142dp"
         android:layout_marginTop="40dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/siklogo"
+        android:src="@drawable/sik_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -51,22 +52,22 @@
         tools:ignore="HardcodedText" />
 
     <!-- Analytics Page Image -->
+
+    <!-- Next Button -->
     <ImageView
         android:id="@+id/analyticspageImage"
         android:layout_width="251dp"
         android:layout_height="312dp"
+        android:layout_marginTop="40dp"
         android:scaleType="centerCrop"
         android:src="@drawable/analyticspage"
         app:layout_constraintBottom_toTopOf="@+id/nextButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="40dp"
         app:layout_constraintTop_toBottomOf="@+id/tagline"
-        app:layout_constraintVertical_bias="0.333"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="ContentDescription" />
 
-    <!-- Next Button -->
     <Button
         android:id="@+id/nextButton"
         android:layout_width="370dp"
