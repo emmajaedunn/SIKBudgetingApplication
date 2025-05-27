@@ -142,7 +142,7 @@
                 android:layout_height="45dp"
                 android:layout_marginStart="20dp"
                 android:background="@drawable/edittext_background"
-                android:drawableStart="@drawable/icon_email"
+                android:drawableStart="@drawable/mail_ic"
                 android:drawablePadding="5dp"
                 android:hint="Enter your email"
                 android:inputType="textEmailAddress"
