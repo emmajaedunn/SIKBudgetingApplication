@@ -32,6 +32,8 @@
         <activity android:name=".TransactionHistoryActivity" />
         <activity android:name=".ManageAccountsActivity" />
         <activity android:name=".ManageCategoriesActivity" />
+        <activity android:name=".HelpSupportActivity" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
