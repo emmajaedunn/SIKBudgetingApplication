@@ -72,6 +72,13 @@ class SettingsActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // Navigate to HelpSupportActivity when Help & Support button is clicked
+        binding.btnHelpSupport.setOnClickListener {
+            val intent = Intent(this, HelpSupportActivity::class.java)
+            startActivity(intent)
+        }
+
         // TODO: Add more click listeners for other settings options
     }
+
 }
