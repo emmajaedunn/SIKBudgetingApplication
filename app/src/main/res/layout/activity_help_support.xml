@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white"
+        android:elevation="4dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Help &amp; Support"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- FAQ 1 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/question1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="How do I set a budget goal?"
+                        android:textSize="16sp"
+                        android:padding="16dp"
+                        android:textColor="@android:color/black"
+                        android:drawableEnd="@drawable/ic_expand"
+                        android:drawablePadding="8dp"
+                        android:clickable="true"
+                        android:focusable="true" />
+
+                    <TextView
+                        android:id="@+id/answer1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Go to the Budgeting Goals section and tap on 'Add Goal' to set a new one."
+                        android:textSize="14sp"
+                        android:padding="16dp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- FAQ 2 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/question2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="How can I track my expenses?"
+                        android:textSize="16sp"
+                        android:padding="16dp"
+                        android:textColor="@android:color/black"
+                        android:drawableEnd="@drawable/ic_expand"
+                        android:drawablePadding="8dp"
+                        android:clickable="true"
+                        android:focusable="true" />
+
+                    <TextView
+                        android:id="@+id/answer2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Use the Transactions section to add and categorize your expenses."
+                        android:textSize="14sp"
+                        android:padding="16dp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- FAQ 3 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/question3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Can I manage multiple accounts?"
+                        android:textSize="16sp"
+                        android:padding="16dp"
+                        android:textColor="@android:color/black"
+                        android:drawableEnd="@drawable/ic_expand"
+                        android:drawablePadding="8dp"
+                        android:clickable="true"
+                        android:focusable="true" />
+
+                    <TextView
+                        android:id="@+id/answer3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Yes, navigate to Manage Accounts to add or edit your accounts."
+                        android:textSize="14sp"
+                        android:padding="16dp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- FAQ 4 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/question4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="How do I change my password?"
+                        android:textSize="16sp"
+                        android:padding="16dp"
+                        android:textColor="@android:color/black"
+                        android:drawableEnd="@drawable/ic_expand"
+                        android:drawablePadding="8dp"
+                        android:clickable="true"
+                        android:focusable="true" />
+
+                    <TextView
+                        android:id="@+id/answer4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Go to Settings > Account > Change Password and follow the prompts."
+                        android:textSize="14sp"
+                        android:padding="16dp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- FAQ 5 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/question5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Can I export my data?"
+                        android:textSize="16sp"
+                        android:padding="16dp"
+                        android:textColor="@android:color/black"
+                        android:drawableEnd="@drawable/ic_expand"
+                        android:drawablePadding="8dp"
+                        android:clickable="true"
+                        android:focusable="true" />
+
+                    <TextView
+                        android:id="@+id/answer5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Yes, go to Settings > Export to back up your data to PDF or CSV."
+                        android:textSize="14sp"
+                        android:padding="16dp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- FAQ 6 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/question6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Who can I contact for support?"
+                        android:textSize="16sp"
+                        android:padding="16dp"
+                        android:textColor="@android:color/black"
+                        android:drawableEnd="@drawable/ic_expand"
+                        android:drawablePadding="8dp"
+                        android:clickable="true"
+                        android:focusable="true" />
+
+                    <TextView
+                        android:id="@+id/answer6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Email us at support@example.com or use the Contact Support option."
+                        android:textSize="14sp"
+                        android:padding="16dp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
