@@ -26,36 +26,56 @@
                 android:padding="16dp">
 
                 <!-- Header -->
-                <RelativeLayout
-                    android:layout_width="match_parent"
+
+                <!-- <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="@string/new_transaction"
+                     android:textSize="20sp"
+                     android:textStyle="bold"
+                     android:layout
+                     _centerInParent="true" />
+             </RelativeLayout> -->
+
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="338dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp">
+                    android:background="@android:color/white"
+                    android:elevation="4dp"
+                    android:minHeight="?attr/actionBarSize"
+                    android:padding="16dp"
+                    android:paddingRight="2dp"
+                    android:textAlignment="center"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    app:titleTextColor="@android:color/black">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Add Transaction"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="21sp"
+                        android:textStyle="bold" />
 
                     <ImageButton
                         android:id="@+id/btnClose"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@android:drawable/ic_menu_close_clear_cancel"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_gravity="right|end"
                         android:background="?attr/selectableItemBackgroundBorderless"
-                         />
+                        android:src="@android:drawable/ic_menu_close_clear_cancel" />
+                </androidx.appcompat.widget.Toolbar>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/new_transaction"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:layout_centerInParent="true" />
-                </RelativeLayout>
-
-                <!-- Tab Layout -->
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabLayout"
-                    android:layout_width="match_parent"
+                    android:layout_width="343dp"
                     android:layout_height="wrap_content"
-                    app:tabMode="fixed"
+                    android:layout_marginBottom="16dp"
                     app:tabGravity="fill"
-                    android:layout_marginBottom="16dp">
+                    app:tabMode="fixed">
 
                     <com.google.android.material.tabs.TabItem
                         android:layout_width="wrap_content"
