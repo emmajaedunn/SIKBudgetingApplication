@@ -1,5 +1,179 @@
 package com.example.st10298850_prog7313_p2_lp
 
+import android.content.Intent
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.example.st10298850_prog7313_p2_lp.data.AppDatabase
+import com.example.st10298850_prog7313_p2_lp.data.UserDao
+import com.example.st10298850_prog7313_p2_lp.databinding.ActivityHomeBinding
+import com.example.st10298850_prog7313_p2_lp.repositories.AccountRepository
+import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
+import com.example.st10298850_prog7313_p2_lp.viewmodels.HomeViewModel
+import com.example.st10298850_prog7313_p2_lp.viewmodels.HomeViewModelFactory
+
+class HomeActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityHomeBinding
+    private lateinit var viewModel: HomeViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val userId = UserSessionManager.getUserId(this)
+        if (userId == -1L) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+            return
+        }
+
+        val userRepository = AccountRepository(
+            AppDatabase.getDatabase(this).accountDao(),
+            AppDatabase.getDatabase(this).userDao()
+        )
+        viewModel = ViewModelProvider(
+            this,
+            HomeViewModelFactory(application, userRepository)
+        )[HomeViewModel::class.java]
+
+        viewModel.userName.observe(this) { name ->
+            binding.tvWelcome.text = "Welcome, $name"
+        }
+
+        viewModel.loadUserName(userId)
+
+        // Set click listeners for navigation buttons
+        binding.btnAddTransaction.setOnClickListener {
+            startActivity(Intent(this, AddTransactionActivity::class.java))
+        }
+
+        binding.btnManageBudgets.setOnClickListener {
+            startActivity(Intent(this, TransactionHistoryActivity::class.java)) // Budget page
+        }
+
+        binding.btnAnalytics.setOnClickListener {
+            startActivity(Intent(this, StatsActivity::class.java))
+        }
+
+        binding.btnSettings.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
+        }
+
+        // Achievement level placeholder
+        binding.tvAchievementLevel.text = "Your achievement level: [Coming Soon]"
+
+        // Setup bottom navigation
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    true
+                }
+                R.id.navigation_stats -> {
+                    startActivity(Intent(this, StatsActivity::class.java))
+                    true
+                }
+                R.id.navigation_add -> {
+                    startActivity(Intent(this, AddTransactionActivity::class.java))
+                    true
+                }
+                R.id.navigation_budget -> {
+                    startActivity(Intent(this, TransactionHistoryActivity::class.java))
+                    true
+                }
+                R.id.navigation_settings -> {
+                    startActivity(Intent(this, SettingsActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/*
+class HomeActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityHomeBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val userId = UserSessionManager.getUserId(this)
+        if (userId == -1L) {
+            // User not logged in, redirect to login screen
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+            return
+        }
+
+        // Get the username or fallback to "User"
+        val username = UserSessionManager.getUsername(this) ?: "User"
+        binding.tvWelcome.text = "Welcome, $username"
+
+        // Set click listeners for navigation buttons
+        binding.btnAddTransaction.setOnClickListener {
+            startActivity(Intent(this, AddTransactionActivity::class.java))
+        }
+
+        binding.btnManageBudgets.setOnClickListener {
+            startActivity(Intent(this, TransactionHistoryActivity::class.java)) // Budget page
+        }
+
+        binding.btnAnalytics.setOnClickListener {
+            startActivity(Intent(this, StatsActivity::class.java))
+        }
+
+        binding.btnSettings.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
+        }
+
+        // Achievement level placeholder
+        binding.tvAchievementLevel.text = "Your achievement level: [Coming Soon]"
+    }
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*package com.example.st10298850_prog7313_p2_lp
+
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.st10298850_prog7313_p2_lp.databinding.ActivityHomeBinding
@@ -71,7 +245,10 @@ class HomeActivity : AppCompatActivity() {
         // Setup bottom navigation
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.navigation_home -> true // Already on home
+                R.id.navigation_home -> {
+                    startActivity(Intent(this, DashboardActivity::class.java))
+                    true
+                }
                 R.id.navigation_stats -> {
                     startActivity(Intent(this, StatsActivity::class.java))
                     true
@@ -188,4 +365,4 @@ class HomeActivity : AppCompatActivity() {
         val totalSpending = categoryTotals.sumOf { it.totalAmount }
         binding.tvTotalSpending.text = "Total Spending: R%.2f".format(totalSpending)
     }
-}
+} */

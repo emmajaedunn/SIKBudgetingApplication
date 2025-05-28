@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.st10298850_prog7313_p2_lp.repositories.AccountRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,6 +22,10 @@ import kotlinx.coroutines.launch
 )
 abstract class AppDatabase : RoomDatabase() {
     // Data Access Objects (DAOs) for different entities
+
+    ///// ADDED THIS
+    // abstract val userDao: UserDao
+
     abstract fun userDao(): UserDao
     abstract fun transactionDao(): TransactionDao
     abstract fun accountDao(): AccountDao
@@ -62,7 +67,20 @@ abstract class AppDatabase : RoomDatabase() {
                 DATABASE_NAME
             )
             .fallbackToDestructiveMigration() // Allows Room to destructively recreate database tables if Migrations that would migrate old database schemas to the latest schema version are not found
-            .addCallback(object : RoomDatabase.Callback() {
+// ADDED THIS
+.addCallback(object : RoomDatabase.Callback() {
+   override fun onCreate(db: SupportSQLiteDatabase) {
+       super.onCreate(db)
+    CoroutineScope(Dispatchers.IO).launch {
+            INSTANCE?.let { seedDatabase(it) }
+        }
+    }
+})
+
+
+
+            /*.addCallback(object : RoomDatabase.Callback() {
+
                 // Called when the database is created for the first time
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     super.onCreate(db)
@@ -71,7 +89,10 @@ abstract class AppDatabase : RoomDatabase() {
                         seedDatabase(getDatabase(context))
                     }
                 }
-            })
+            })*/
+
+
+
             .build()
         }
 
@@ -80,8 +101,35 @@ abstract class AppDatabase : RoomDatabase() {
          *
          * @param database The database instance to seed
          */
+        //// ADDED THIS
         private suspend fun seedDatabase(database: AppDatabase) {
             val userDao = database.userDao()
+            val accountDao = database.accountDao()
+            val accountRepository = AccountRepository(accountDao, userDao)
+
+            // Check if the database is empty
+            if (userDao.getUserCount() == 0) {
+                // Create an initial admin user
+                val initialUser = User(
+                    email = "admin@gmail.com",
+                    password = "Admin123$",
+                    name = "Admin",
+                    username = "admin"
+                )
+                userDao.insertUser(initialUser)
+            }
+
+            // Add more seeding logic if needed
+        }
+
+        /*private suspend fun seedDatabase(database: AppDatabase) {
+            ///// ADDED THIS
+            val accountRepository = AccountRepository(
+            database.accountDao(),
+            database.userDao())
+            //
+            //
+            // val userDao = database.userDao()
             // Check if the database is empty
             if (userDao.getUserCount() == 0) {
                 // Create an initial admin user
@@ -94,7 +142,7 @@ abstract class AppDatabase : RoomDatabase() {
                 userDao.insertUser(initialUser)
             }
             // Add more seeding logic here as needed
-        }
+        }*/
 
         /**
          * Deletes the existing database.

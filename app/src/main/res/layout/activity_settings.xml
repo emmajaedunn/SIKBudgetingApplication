@@ -7,21 +7,30 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_width="232dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="48dp"
         android:background="@android:color/white"
         android:elevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Settings"
-            android:textSize="18sp"
             android:textColor="@android:color/black"
-            android:layout_gravity="center" />
+            android:textSize="21sp"
+            android:textStyle="bold" />
 
+        <ImageButton
+            android:id="@+id/btnProfile"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="end"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/person_ic" />
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView

@@ -5,6 +5,54 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
+import com.example.st10298850_prog7313_p2_lp.repositories.AccountRepository
+import kotlinx.coroutines.launch
+
+class HomeViewModel(
+    application: Application,
+    private val userRepository: AccountRepository
+) : AndroidViewModel(application) {
+
+    private val _userName = MutableLiveData<String>()
+    val userName: LiveData<String> = _userName
+
+    private val _achievementLevel = MutableLiveData<String>()
+    val achievementLevel: LiveData<String> = _achievementLevel
+
+    fun loadUserName(userId: Long) {
+        viewModelScope.launch {
+            val user = userRepository.getUserById(userId)
+            _userName.postValue(user?.name ?: "User")
+            _achievementLevel.postValue("Loading...") // or real logic here
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*package com.example.st10298850_prog7313_p2_lp.viewmodels
+
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.st10298850_prog7313_p2_lp.data.AppDatabase
 import com.example.st10298850_prog7313_p2_lp.data.BudgetGoal
 import com.example.st10298850_prog7313_p2_lp.data.BudgetGoalRepository
@@ -60,4 +108,4 @@ class HomeViewModel(
             _budgetGoals.value = budgetGoalRepository.getBudgetGoalsForUser(userId)
         }
     }
-}
+}*/

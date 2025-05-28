@@ -7,13 +7,16 @@ import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.st10298850_prog7313_p2_lp.data.AppDatabase
 import com.example.st10298850_prog7313_p2_lp.data.Transaction
+import com.example.st10298850_prog7313_p2_lp.repositories.AccountRepository
 import com.example.st10298850_prog7313_p2_lp.repositories.TransactionRepository
 import kotlinx.coroutines.launch
+import com.example.st10298850_prog7313_p2_lp.viewmodels.TransactionHistoryViewModelFactory
 import java.util.Calendar
 
 class TransactionHistoryViewModel(
     application: Application,
     private val repository: TransactionRepository,
+    private val accountRepository: AccountRepository,
     private val userId: Long
 ) : AndroidViewModel(application) {
     private val _filteredTransactions = MediatorLiveData<List<Transaction>>()

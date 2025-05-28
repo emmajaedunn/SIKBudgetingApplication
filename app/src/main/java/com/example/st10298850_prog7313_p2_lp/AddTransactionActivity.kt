@@ -32,6 +32,7 @@ import com.example.st10298850_prog7313_p2_lp.repositories.AccountRepository
 import com.example.st10298850_prog7313_p2_lp.repositories.CategoryRepository
 import com.example.st10298850_prog7313_p2_lp.repositories.TransactionRepository
 import com.example.st10298850_prog7313_p2_lp.viewmodels.AddTransactionViewModel
+import com.example.st10298850_prog7313_p2_lp.viewmodels.TransactionHistoryViewModelFactory
 import com.google.android.material.tabs.TabLayout
 import java.io.File
 import java.io.IOException
@@ -122,7 +123,8 @@ class AddTransactionActivity : AppCompatActivity() {
         val database = AppDatabase.getDatabase(applicationContext)
         val transactionRepository = TransactionRepository(database.transactionDao())
         val categoryRepository = CategoryRepository(database.categoryDao())
-        val accountRepository = AccountRepository(database.accountDao())
+        val accountRepository = AccountRepository(database.accountDao(), database.userDao())
+
         val factory = AddTransactionViewModel.Factory(transactionRepository, categoryRepository, accountRepository)
         viewModel = ViewModelProvider(this, factory)[AddTransactionViewModel::class.java]
 
