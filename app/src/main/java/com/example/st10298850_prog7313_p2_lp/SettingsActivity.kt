@@ -1,11 +1,9 @@
 package com.example.st10298850_prog7313_p2_lp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.st10298850_prog7313_p2_lp.databinding.ActivitySettingsBinding
-import java.text.SimpleDateFormat
-import java.util.*
-import android.content.Intent
 
 /**
  * SettingsActivity provides user interface for app settings and navigation to other activities.
@@ -26,8 +24,6 @@ class SettingsActivity : AppCompatActivity() {
      * Sets up the user interface components, including the bottom navigation.
      */
     private fun setupUI() {
-        // TODO: Set current date if needed
-
         // Setup bottom navigation
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -48,7 +44,7 @@ class SettingsActivity : AppCompatActivity() {
                     true
                 }
                 R.id.navigation_settings -> {
-                    // Already on settings, do nothing
+                    // Already on settings
                     true
                 }
                 else -> false
@@ -60,18 +56,19 @@ class SettingsActivity : AppCompatActivity() {
      * Sets up click listeners for various settings options.
      */
     private fun setupClickListeners() {
-        // Navigate to ManageCategoriesActivity when Transaction Categories button is clicked
+        // Navigate to Manage Categories
         binding.btnTransactionCategories.setOnClickListener {
-            val intent = Intent(this, ManageCategoriesActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, ManageCategoriesActivity::class.java))
         }
 
-        // Navigate to ManageAccountsActivity when Manage Accounts button is clicked
+        // Navigate to Manage Accounts
         binding.btnManageAccounts.setOnClickListener {
-            val intent = Intent(this, ManageAccountsActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, ManageAccountsActivity::class.java))
         }
 
-        // TODO: Add more click listeners for other settings options
+        // Navigate to Achievements
+        binding.btnAchievements.setOnClickListener {
+            startActivity(Intent(this, AchievementsActivity::class.java))
+        }
     }
 }

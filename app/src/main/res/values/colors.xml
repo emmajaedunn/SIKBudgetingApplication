@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="sik_icon_background">#FFFFFF</color>
+    <color name="app_logo_background">#FFFFFF</color> <!-- or your desired background color -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#3B82F6</color>
