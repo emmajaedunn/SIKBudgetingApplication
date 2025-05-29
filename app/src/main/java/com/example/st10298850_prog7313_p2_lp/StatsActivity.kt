@@ -1,38 +1,39 @@
 package com.example.st10298850_prog7313_p2_lp
 
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.example.st10298850_prog7313_p2_lp.data.AppDatabase
 import com.example.st10298850_prog7313_p2_lp.databinding.ActivityStatsBinding
-import java.text.SimpleDateFormat
-import java.util.*
-import android.content.Intent
+import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
+import com.github.mikephil.charting.data.PieEntry
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieData
+import kotlinx.coroutines.launch
 
 class StatsActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityStatsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityStatsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        // Add a TextView or some other view to confirm content is displayed
 
         setupUI()
         loadStatistics()
     }
 
     private fun setupUI() {
-
-        // Setup bottom navigation
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
                     startActivity(Intent(this, HomeActivity::class.java))
                     true
                 }
-                R.id.navigation_stats -> {
-                    // Already on stats, do nothing or refresh
-                    true
-                }
+                R.id.navigation_stats -> true
                 R.id.navigation_add -> {
                     startActivity(Intent(this, AddTransactionActivity::class.java))
                     true
@@ -51,6 +52,39 @@ class StatsActivity : AppCompatActivity() {
     }
 
     private fun loadStatistics() {
-        // Load and display statistical data
+        val userId = UserSessionManager.getUserId(this)
+        if (userId == -1L) return
+
+        lifecycleScope.launch {
+            val dao = AppDatabase.getDatabase(this@StatsActivity).transactionDao()
+
+            val income = dao.getTotalIncome(userId) ?: 0.0
+            val expenses = dao.getTotalExpenses(userId) ?: 0.0
+            val net = income - expenses
+
+            binding.tvIncome.text = String.format("R%.2f", income)
+            binding.tvExpenses.text = String.format("R%.2f", expenses)
+            binding.tvNetBalance.text = String.format("R%.2f", net)
+
+            val entries = mutableListOf<PieEntry>()
+            if (income > 0f) entries.add(PieEntry(income.toFloat(), "Income"))
+            if (expenses > 0f) entries.add(PieEntry(expenses.toFloat(), "Expenses"))
+
+            val dataSet = PieDataSet(entries, "")
+            dataSet.colors = listOf(Color.parseColor("#4CAF50"), Color.parseColor("#F44336"))
+            val pieData = PieData(dataSet)
+            pieData.setDrawValues(true)
+            pieData.setValueTextColor(Color.WHITE)
+            pieData.setValueTextSize(14f)
+
+            binding.pieChart.data = pieData
+            binding.pieChart.description.isEnabled = false
+            binding.pieChart.setUsePercentValues(true)
+            binding.pieChart.setDrawEntryLabels(false)
+            binding.pieChart.centerText = "Income vs Expenses"
+            binding.pieChart.setCenterTextSize(14f)
+            binding.pieChart.animateY(1000)
+            binding.pieChart.invalidate()
+        }
     }
 }

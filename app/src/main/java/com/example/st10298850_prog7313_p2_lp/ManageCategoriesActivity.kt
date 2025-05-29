@@ -14,6 +14,7 @@ import com.example.st10298850_prog7313_p2_lp.data.AppDatabase
 import com.example.st10298850_prog7313_p2_lp.data.Category
 import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 import kotlinx.coroutines.launch
+import com.example.st10298850_prog7313_p2_lp.ManageCategoriesActivity
 
 /**
  * ManageCategoriesActivity allows users to view, add, edit, and delete budget categories.
