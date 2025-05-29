@@ -42,15 +42,13 @@ android {
 }
 
 dependencies {
-    // Existing dependencies
+    // Jetpack Core & UI
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
     // Room components
     val roomVersion = "2.6.1"
@@ -58,15 +56,30 @@ dependencies {
     kapt("androidx.room:room-compiler:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
 
-    // Coroutines for Room
+    // Kotlin Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
-    val lifecycleVersion = "2.6.1"  // Use the latest version
+    // Lifecycle ViewModel & Runtime
+    val lifecycleVersion = "2.6.1"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
-    implementation ("androidx.activity:activity-ktx:1.6.1")
-    implementation ("androidx.fragment:fragment-ktx:1.5.5")
-    implementation ("com.jakewharton.threetenabp:threetenabp:1.3.1")
+
+    // Activity & Fragment KTX
+    implementation("androidx.activity:activity-ktx:1.6.1")
+    implementation("androidx.fragment:fragment-ktx:1.5.5")
+
+    // Date and Time API
+    implementation("com.jakewharton.threetenabp:threetenabp:1.3.1")
+
+    // Glide for image loading
     implementation("com.github.bumptech.glide:glide:4.12.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
+
+    // MPAndroidChart (for PieChart in stats)
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
+    // Testing
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
 }

@@ -18,6 +18,11 @@ interface TransactionDao {
 
     @Query("SELECT * FROM transactions")
     suspend fun getAllTransactions(): List<Transaction>
+    @Query("SELECT SUM(amount) FROM transactions WHERE userId = :userId AND type = 'Income'")
+    suspend fun getTotalIncome(userId: Long): Double?
+
+    @Query("SELECT SUM(amount) FROM transactions WHERE userId = :userId AND type = 'Expense'")
+    suspend fun getTotalExpenses(userId: Long): Double?
 
     @Query("""
         SELECT category AS categoryName, SUM(amount) AS totalAmount, COUNT(*) AS transactionCount

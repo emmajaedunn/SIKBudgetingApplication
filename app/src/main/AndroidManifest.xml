@@ -38,8 +38,7 @@
         <activity android:name=".SettingsActivity" />
         <activity android:name=".ManageAccountsActivity" />
         <activity android:name=".ManageCategoriesActivity" />
-
-        <!-- ✅ Add AchievementsActivity -->
+        <activity android:name=".HelpSupportActivity" />
         <activity android:name=".AchievementsActivity" />
 
         <!-- FileProvider -->
