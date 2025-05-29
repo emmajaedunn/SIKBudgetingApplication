@@ -45,6 +45,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Card with functional settings buttons -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -93,10 +94,22 @@
                         app:iconGravity="start"
                         style="@style/Widget.MaterialComponents.Button.TextButton" />
 
+                    <!-- NEW: Achievements Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAchievements"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="View Achievements"
+                        android:textAlignment="textStart"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        app:icon="@drawable/icon_badge"
+                        app:iconGravity="start"
+                        style="@style/Widget.MaterialComponents.Button.TextButton" />
                 </LinearLayout>
-
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Card with Notifications Switch -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -130,11 +143,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true" />
-
                 </LinearLayout>
-
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Card with Help & Sign Out -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -170,13 +182,9 @@
                         app:icon="@drawable/logout_ic"
                         app:iconGravity="start"
                         style="@style/Widget.MaterialComponents.Button.TextButton" />
-
                 </LinearLayout>
-
             </com.google.android.material.card.MaterialCardView>
-
         </LinearLayout>
-
     </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -186,5 +194,4 @@
         app:menu="@menu/bottom_nav_menu"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
