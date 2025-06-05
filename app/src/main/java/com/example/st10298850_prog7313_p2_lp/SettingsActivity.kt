@@ -69,9 +69,9 @@ class SettingsActivity : AppCompatActivity() {
             startActivity(Intent(this, AchievementsActivity::class.java))
         }
 
-        // Help & Support (if implemented)
+        // Help & Support
         binding.btnHelpSupport.setOnClickListener {
-            startActivity(Intent(this@SettingsActivity, HelpSupportActivity::class.java)) // Correct
+            startActivity(Intent(this, HelpSupportActivity::class.java))
         }
 
 
