@@ -2,7 +2,6 @@ package com.example.st10298850_prog7313_p2_lp
 
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.st10298850_prog7313_p2_lp.databinding.ActivityHelpSupportBinding
 
@@ -15,7 +14,16 @@ class HelpSupportActivity : AppCompatActivity() {
         binding = ActivityHelpSupportBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        setupClickListeners()
         setupFAQClickListeners()
+    }
+
+    private fun setupClickListeners() {
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
     }
 
     private fun setupFAQClickListeners() {

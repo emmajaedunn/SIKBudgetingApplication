@@ -70,7 +70,7 @@ class ManageAccountsActivity : AppCompatActivity() {
      * Sets up click listeners for various UI elements.
      */
     private fun setupClickListeners() {
-        binding.btnBack.setOnClickListener {
+        binding.btnClose.setOnClickListener {
             finish()
         }
 

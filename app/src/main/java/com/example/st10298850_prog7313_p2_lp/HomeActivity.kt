@@ -12,6 +12,7 @@ import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 import com.example.st10298850_prog7313_p2_lp.viewmodels.HomeViewModel
 import com.example.st10298850_prog7313_p2_lp.viewmodels.HomeViewModelFactory
 
+
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
     private lateinit var viewModel: HomeViewModel
@@ -62,6 +63,7 @@ class HomeActivity : AppCompatActivity() {
 
         // Achievement level placeholder
         binding.tvAchievementLevel.text = "Your achievement level: [Coming Soon]"
+
 
         // Setup bottom navigation
         binding.bottomNavigation.setOnItemSelectedListener { item ->
