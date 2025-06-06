@@ -41,12 +41,12 @@
             tools:layout_editor_absoluteY="18dp" />
 
         <ImageButton
-            android:id="@+id/btnNotification"
+            android:id="@+id/btnProfile"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:layout_gravity="start|center_vertical"
-            android:src="@drawable/notifications_ic"
+            android:src="@drawable/account_circle_ic"
             tools:layout_editor_absoluteX="347dp"
             tools:layout_editor_absoluteY="8dp" />
 

@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.st10298850_prog7313_p2_lp.databinding.ActivitySettingsBinding
 import com.example.st10298850_prog7313_p2_lp.HelpSupportActivity
+import android.widget.ImageButton
+
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -54,6 +56,13 @@ class SettingsActivity : AppCompatActivity() {
      * Sets up click listeners for settings buttons.
      */
     private fun setupClickListeners() {
+        // Profile Page
+        val profileButton = findViewById<ImageButton>(R.id.btnProfile)
+        profileButton.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+
+
         // Manage Categories
         binding.btnTransactionCategories.setOnClickListener {
             startActivity(Intent(this, ManageCategoriesActivity::class.java))
@@ -73,7 +82,6 @@ class SettingsActivity : AppCompatActivity() {
         binding.btnHelpSupport.setOnClickListener {
             startActivity(Intent(this, HelpSupportActivity::class.java))
         }
-
 
         // Sign out
         binding.btnSignOut?.setOnClickListener {

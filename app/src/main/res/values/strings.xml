@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">SIK</string>
     <string name="new_transaction">New Transaction</string>
     <string name="income">Income</string>
     <string name="expense">Expense</string>
@@ -47,6 +48,5 @@
     <string name="set_goals">Set Goals</string>
     <string name="custom">Custom</string>
     <string name="all_time">All Time</string>
-    <string name="SIKBudgeting">app_name</string>
     <string name="back_button">Back</string>
 </resources>
