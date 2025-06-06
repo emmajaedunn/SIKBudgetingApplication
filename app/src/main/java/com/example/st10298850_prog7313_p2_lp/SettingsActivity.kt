@@ -1,16 +1,13 @@
 package com.example.st10298850_prog7313_p2_lp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.st10298850_prog7313_p2_lp.databinding.ActivitySettingsBinding
-import java.text.SimpleDateFormat
-import java.util.*
-import android.content.Intent
+import com.example.st10298850_prog7313_p2_lp.HelpSupportActivity
 
-/**
- * SettingsActivity provides user interface for app settings and navigation to other activities.
- */
 class SettingsActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivitySettingsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,12 +20,9 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     /**
-     * Sets up the user interface components, including the bottom navigation.
+     * Sets up the bottom navigation bar.
      */
     private fun setupUI() {
-        // TODO: Set current date if needed
-
-        // Setup bottom navigation
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
@@ -48,7 +42,7 @@ class SettingsActivity : AppCompatActivity() {
                     true
                 }
                 R.id.navigation_settings -> {
-                    // Already on settings, do nothing
+                    // Already on settings screen
                     true
                 }
                 else -> false
@@ -57,28 +51,36 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     /**
-     * Sets up click listeners for various settings options.
+     * Sets up click listeners for settings buttons.
      */
     private fun setupClickListeners() {
-        // Navigate to ManageCategoriesActivity when Transaction Categories button is clicked
+        // Manage Categories
         binding.btnTransactionCategories.setOnClickListener {
-            val intent = Intent(this, ManageCategoriesActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, ManageCategoriesActivity::class.java))
         }
 
-        // Navigate to ManageAccountsActivity when Manage Accounts button is clicked
+        // Manage Accounts
         binding.btnManageAccounts.setOnClickListener {
-            val intent = Intent(this, ManageAccountsActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, ManageAccountsActivity::class.java))
         }
 
-        // Navigate to HelpSupportActivity when Help & Support button is clicked
+        // View Achievements
+        binding.btnAchievements.setOnClickListener {
+            startActivity(Intent(this, AchievementsActivity::class.java))
+        }
+
+        // Help & Support
         binding.btnHelpSupport.setOnClickListener {
-            val intent = Intent(this, HelpSupportActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, HelpSupportActivity::class.java))
         }
 
-        // TODO: Add more click listeners for other settings options
-    }
 
+        // Sign out
+        binding.btnSignOut?.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+        }
+    }
 }

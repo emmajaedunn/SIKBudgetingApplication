@@ -2,38 +2,47 @@ package com.example.st10298850_prog7313_p2_lp
 
 import android.os.Bundle
 import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.st10298850_prog7313_p2_lp.databinding.ActivityHelpSupportBinding
 
 class HelpSupportActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityHelpSupportBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_help_support)
+        binding = ActivityHelpSupportBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        // Array of question/answer pairs
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        setupClickListeners()
+        setupFAQClickListeners()
+    }
+
+    private fun setupClickListeners() {
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
+    }
+
+    private fun setupFAQClickListeners() {
         val questions = arrayOf(
-            R.id.question1, R.id.question2, R.id.question3,
-            R.id.question4, R.id.question5, R.id.question6
+            binding.question1, binding.question2, binding.question3,
+            binding.question4, binding.question5, binding.question6
         )
 
         val answers = arrayOf(
-            R.id.answer1, R.id.answer2, R.id.answer3,
-            R.id.answer4, R.id.answer5, R.id.answer6
+            binding.answer1, binding.answer2, binding.answer3,
+            binding.answer4, binding.answer5, binding.answer6
         )
 
         for (i in questions.indices) {
-            val question = findViewById<TextView>(questions[i])
-            val answer = findViewById<TextView>(answers[i])
-
-            question.setOnClickListener {
-                if (answer.visibility == View.GONE) {
-                    answer.visibility = View.VISIBLE
-                    question.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_collapse, 0)
-                } else {
-                    answer.visibility = View.GONE
-                    question.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_expand, 0)
-                }
+            questions[i].setOnClickListener {
+                val isVisible = answers[i].visibility == View.VISIBLE
+                answers[i].visibility = if (isVisible) View.GONE else View.VISIBLE
+                val icon = if (isVisible) R.drawable.ic_expand else R.drawable.ic_collapse
+                questions[i].setCompoundDrawablesWithIntrinsicBounds(0, 0, icon, 0)
             }
         }
     }

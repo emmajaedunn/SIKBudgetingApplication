@@ -48,4 +48,5 @@
     <string name="custom">Custom</string>
     <string name="all_time">All Time</string>
     <string name="SIKBudgeting">app_name</string>
+    <string name="back_button">Back</string>
 </resources>

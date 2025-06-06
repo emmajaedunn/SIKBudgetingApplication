@@ -1,26 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
+    <!-- Toolbar Layout -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="48dp"
         android:background="@android:color/white"
         android:elevation="4dp"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|center_vertical"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/arrow_back_ic" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
+            android:paddingRight="8dp"
             android:text="Settings"
-            android:textSize="18sp"
+            android:textAlignment="center"
             android:textColor="@android:color/black"
-            android:layout_gravity="center" />
+            android:textSize="21sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="40dp"
+            tools:layout_editor_absoluteY="18dp" />
+
+        <ImageButton
+            android:id="@+id/btnNotification"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_gravity="start|center_vertical"
+            android:src="@drawable/notifications_ic"
+            tools:layout_editor_absoluteX="347dp"
+            tools:layout_editor_absoluteY="8dp" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -36,6 +64,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Card with functional settings buttons -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -84,10 +113,22 @@
                         app:iconGravity="start"
                         style="@style/Widget.MaterialComponents.Button.TextButton" />
 
+                    <!-- NEW: Achievements Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAchievements"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="View Achievements"
+                        android:textAlignment="textStart"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        app:icon="@drawable/icon_badge"
+                        app:iconGravity="start"
+                        style="@style/Widget.MaterialComponents.Button.TextButton" />
                 </LinearLayout>
-
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Card with Notifications Switch -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -121,11 +162,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true" />
-
                 </LinearLayout>
-
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Card with Help & Sign Out -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -161,21 +201,19 @@
                         app:icon="@drawable/logout_ic"
                         app:iconGravity="start"
                         style="@style/Widget.MaterialComponents.Button.TextButton" />
-
                 </LinearLayout>
-
             </com.google.android.material.card.MaterialCardView>
-
         </LinearLayout>
-
     </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:menu="@menu/bottom_nav_menu"
         app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/nav_bg"
+        app:menu="@menu/bottom_nav_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--<color name="sik_icon_background">#FFFFFF</color>-->
+    <!--<color name="app_logo_background">#FFFFFF</color> or your desired background color -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#3B82F6</color>
@@ -8,18 +10,21 @@
     <color name="textColorPrimary">#262626</color>
     <color name="textColorSecondary">#525252</color>
     <color name="hintColor">#ADAEBC</color>
-    <color name="backgroundColor">#FAFAFA</color>
     <color name="background_color">#FAFAFA</color>
     <color name="text_color_primary">#171717</color>
     <color name="text_color_secondary">#525252</color>
     <color name="progress_bar_color">#1E7A53</color>
-    <color name="progress_background_color">#E5E5E5</color>
     <color name="expense_color">#FF5722</color>
     <color name="income_color">#4CAF50</color>
-    <color name="icon_background">#FFFFFF</color>
-    <color name="sik_icon_background">#FFFFFF</color>
-    <color name="app_logo_background">#FFFFFF</color>
     <color name="progress_color">#E5E5E5</color>
+    <color name="icon_background">#FFBB86FC</color>
+    <color name="progress_background_color">#E0E0E0</color>
     <color name="icon_tint">#757575</color>
     <color name="amount_color">#1976D2</color>
+    <color name="lightgreen_color">#96B54C</color>
+    <color name="darkgreen_color">#227457</color>
+    <color name="lightblue_color">#2084C2</color>
+    <color name="lightblue2_color">#70BFE4</color>
+    <color name="darkblue_color">#173C70</color>
+    <color name="nav_bg">#B7D9F0</color>
 </resources>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvLevelLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Level: Starter"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="12dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBarAchievement"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="0"
+            android:max="100"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="12dp">
+
+            <ImageView
+                android:id="@+id/badgeStarter"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="8dp"
+                android:src="@drawable/badge_1"
+                android:contentDescription="Starter Badge" />
+
+            <ImageView
+                android:id="@+id/badgeBronze"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="8dp"
+                android:src="@drawable/badge_2"
+                android:contentDescription="Bronze Badge" />
+
+            <ImageView
+                android:id="@+id/badgeSilver"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="8dp"
+                android:src="@drawable/badge_3"
+                android:contentDescription="Silver Badge" />
+
+            <ImageView
+                android:id="@+id/badgeGold"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="8dp"
+                android:src="@drawable/badge_4"
+                android:contentDescription="Gold Badge" />
+
+            <ImageView
+                android:id="@+id/badgePlatinum"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="8dp"
+                android:src="@drawable/badge_5"
+                android:contentDescription="Platinum Badge" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

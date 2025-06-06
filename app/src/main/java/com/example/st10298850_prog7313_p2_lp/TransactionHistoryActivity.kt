@@ -24,6 +24,9 @@ import android.graphics.drawable.Drawable
 import android.widget.Toast
 import java.io.File
 import androidx.core.content.FileProvider
+import com.example.st10298850_prog7313_p2_lp.data.AppDatabase
+import com.example.st10298850_prog7313_p2_lp.repositories.AccountRepository
+import com.example.st10298850_prog7313_p2_lp.repositories.TransactionRepository
 
 /**
  * Activity for displaying and managing transaction history.
@@ -51,10 +54,9 @@ class TransactionHistoryActivity : AppCompatActivity() {
             return
         }
 
-        setupViewModel(userId)
+        setupViewModel()
         setupRecyclerView()
         setupUI()
-        observeTransactions()
     }
 
     /**
@@ -69,10 +71,47 @@ class TransactionHistoryActivity : AppCompatActivity() {
      * Sets up the ViewModel for this activity.
      * @param userId The ID of the currently logged-in user.
      */
-    private fun setupViewModel(userId: Long) {
-        val factory = TransactionHistoryViewModelFactory(application, userId)
+
+    // ADDED THIS (NEW)
+    private fun setupViewModel() {
+        val userId = UserSessionManager.getUserId(this)
+        val database = AppDatabase.getDatabase(applicationContext)
+        val accountRepository = AccountRepository(database.accountDao(), database.userDao())
+        val transactionRepository = TransactionRepository(database.transactionDao())
+
+        val factory = TransactionHistoryViewModelFactory(
+            application,
+            transactionRepository,
+            accountRepository,
+            userId
+        )
+
         viewModel = ViewModelProvider(this, factory)[TransactionHistoryViewModel::class.java]
     }
+
+
+
+
+
+
+    // ADDED THIS (OLD)
+    /*private fun setupViewModel(userId: Long) {
+        val database = AppDatabase.getDatabase(applicationContext)
+        val accountRepository = AccountRepository(database.accountDao(), database.userDao())
+
+        val factory = TransactionHistoryViewModelFactory(application, accountRepository, userId)
+        viewModel = ViewModelProvider(this, factory)[TransactionHistoryViewModel::class.java]
+    }*/
+
+
+
+
+    /*
+    private fun setupViewModel(userId: Long) {
+
+        val factory = TransactionHistoryViewModelFactory(application, userId)
+        viewModel = ViewModelProvider(this, factory)[TransactionHistoryViewModel::class.java]
+    }*/
 
     /**
      * Sets up the RecyclerView to display transactions.
@@ -209,17 +248,51 @@ class TransactionHistoryActivity : AppCompatActivity() {
     /**
      * Observes changes in filtered transactions and updates the UI accordingly.
      */
-    private fun observeTransactions() {
+    /*private fun observeTransactions() {
         viewModel.filteredTransactions.observe(this) { transactions ->
             transactionAdapter.submitList(transactions)
         }
-    }
+    }*/
 
     /**
      * Shows a popup dialog displaying the receipt image for a transaction.
      * @param receiptPath The file path of the receipt image.
      */
+
+    //// ADDED THIS
     private fun showImagePopup(receiptPath: String) {
+        Log.d("ImagePopup", "Attempting to show image from path: $receiptPath")
+
+        val file = File(receiptPath)
+        if (!file.exists()) {
+            Log.e("ImagePopup", "File does not exist: $receiptPath")
+            Toast.makeText(this, "Receipt image not found", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val uri = FileProvider.getUriForFile(
+            this,
+            "${packageName}.fileprovider",
+            file
+        )
+
+        val dialog = Dialog(this)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.dialog_image_popup)
+
+        val imageView = dialog.findViewById<ImageView>(R.id.popupImageView)
+
+        Glide.with(this)
+            .load(uri)
+            .error(R.drawable.close_ic) // fallback icon
+            .into(imageView)
+
+        dialog.show()
+        Log.d("ImagePopup", "Dialog shown with image")
+    }}
+
+
+    /*private fun showImagePopup(receiptPath: String) {
         Log.d("ImagePopup", "Attempting to show image from path: $receiptPath")
 
         val dialog = Dialog(this)
@@ -314,4 +387,4 @@ class TransactionHistoryActivity : AppCompatActivity() {
         dialog.show()
         Log.d("ImagePopup", "Dialog shown")
     }
-}
+} */
