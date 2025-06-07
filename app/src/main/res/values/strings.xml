@@ -14,10 +14,16 @@
     <string name="add_transaction">Add Transaction</string>
     <string name="login_slogan">Zero-Based Budgeting Made Simple</string>
     <string name="login_to_account">Login to your account</string>
+    <string name="profile">Profile</string>
     <string name="email">Email</string>
     <string name="enter_email">Enter your email</string>
     <string name="password">Password</string>
+    <string name="current_password">Current Password</string>
+    <string name="change_password">Change Password</string>
+    <string name="confirm_password_change">Confirm Password Change</string>
+    <string name="name">Name</string>
     <string name="enter_password">Enter your password</string>
+    <string name="new_password">Enter new password</string>
     <string name="forgot_password">Forgot your password?</string>
     <string name="sign_up_prompt">Don\'t have an account? Sign up</string>
     <string name="login">Login</string>
@@ -31,8 +37,12 @@
     <string name="menu_budget">Budget</string>
     <string name="menu_settings">Settings</string>
     <string name="budget_goals">Budget Goals</string>
+    <string name="budgeting_goals">Budgeting Goals</string>
     <string name="categories">Categories</string>
+    <string name="transaction_categories">Transaction Categories</string>
     <string name="account">Account</string>
+    <string name="manage_account">Manage Accounts</string>
+    <string name="view_achievements">View Achievements</string>
     <string name="close_button">Close</string>
     <string name="account_name">Account Name</string>
     <string name="account_type">Account Type</string>
@@ -48,5 +58,13 @@
     <string name="custom">Custom</string>
     <string name="all_time">All Time</string>
     <string name="app_name">SIK Budgeting</string>
-    <string name="back_button">Back</string>
+    <string name="na_text">N/A</string>
+    <string name="back_button">Back Button</string>
+    <string name="bg_curve">Settings Curve Background</string>
+    <string name="profile_pic">Profile Pic</string>
+    <string name="profile_page">Profile Page</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="notifications">Notifications</string>
+    <string name="help_support">Help &amp; Support</string>
+    <string name="password_hash">********</string>
 </resources>

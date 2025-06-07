@@ -16,9 +16,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/sik_icon_round"
+        android:icon="@drawable/sik_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/sik_icon_round"
+        android:roundIcon="@mipmap/sik_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.ST10298850PROG7313P2LP"
         tools:replace="android:label,android:icon"
@@ -40,7 +40,8 @@
         <activity android:name=".ManageAccountsActivity" />
         <activity android:name=".ManageCategoriesActivity" />
         <activity android:name=".HelpSupportActivity" />
-        <activity android:name=".AchievementsActivity" />
+        <activity android:name=".AchievementsActivity"/>
+        <activity android:name=".ProfileActivity" />
 
         <!-- FileProvider -->
         <provider

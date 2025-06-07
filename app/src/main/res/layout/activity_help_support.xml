@@ -26,13 +26,14 @@
             android:layout_gravity="start|center_vertical"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/arrow_back_ic"
-            android:contentDescription="Back" />
+            android:contentDescription="@string/back_button" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingRight="45dp"
-            android:text="Help &amp; Support"
+            android:paddingEnd="45dp"
+            android:paddingStart="4dp"
+            android:text="@string/help_support"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="21sp"
@@ -78,13 +79,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:clickable="true"
-                        android:drawableEnd="@drawable/ic_expand"
+                        app:drawableEndCompat="@drawable/ic_expand"
                         android:drawablePadding="8dp"
                         android:focusable="true"
                         android:padding="16dp"
                         android:text="How do I set a budget goal?"
                         android:textColor="@android:color/black"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        tools:ignore="HardcodedText" />
 
                     <TextView
                         android:id="@+id/answer1"
@@ -93,7 +95,8 @@
                         android:text="Go to the Budgeting Goals section and tap on 'Add Goal' to set a new one."
                         android:textSize="14sp"
                         android:padding="16dp"
-                        android:visibility="gone" />
+                        android:visibility="gone"
+                        tools:ignore="HardcodedText" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -118,10 +121,11 @@
                         android:textSize="16sp"
                         android:padding="16dp"
                         android:textColor="@android:color/black"
-                        android:drawableEnd="@drawable/ic_expand"
+                        app:drawableEndCompat="@drawable/ic_expand"
                         android:drawablePadding="8dp"
                         android:clickable="true"
-                        android:focusable="true" />
+                        android:focusable="true"
+                        tools:ignore="HardcodedText" />
 
                     <TextView
                         android:id="@+id/answer2"
@@ -130,7 +134,8 @@
                         android:text="Head over to stats to see the progress with your selected budgets."
                         android:textSize="14sp"
                         android:padding="16dp"
-                        android:visibility="gone" />
+                        android:visibility="gone"
+                        tools:ignore="HardcodedText" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -155,10 +160,11 @@
                         android:textSize="16sp"
                         android:padding="16dp"
                         android:textColor="@android:color/black"
-                        android:drawableEnd="@drawable/ic_expand"
+                        app:drawableEndCompat="@drawable/ic_expand"
                         android:drawablePadding="8dp"
                         android:clickable="true"
-                        android:focusable="true" />
+                        android:focusable="true"
+                        tools:ignore="HardcodedText" />
 
                     <TextView
                         android:id="@+id/answer3"
@@ -168,7 +174,8 @@
                         budgeting experience to make it more enjoyable."
                         android:textSize="14sp"
                         android:padding="16dp"
-                        android:visibility="gone" />
+                        android:visibility="gone"
+                        tools:ignore="HardcodedText" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -193,10 +200,11 @@
                         android:textSize="16sp"
                         android:padding="16dp"
                         android:textColor="@android:color/black"
-                        android:drawableEnd="@drawable/ic_expand"
+                        app:drawableEndCompat="@drawable/ic_expand"
                         android:drawablePadding="8dp"
                         android:clickable="true"
-                        android:focusable="true" />
+                        android:focusable="true"
+                        tools:ignore="HardcodedText" />
 
                     <TextView
                         android:id="@+id/answer4"
@@ -206,7 +214,8 @@
                         your information and change your password."
                         android:textSize="14sp"
                         android:padding="16dp"
-                        android:visibility="gone" />
+                        android:visibility="gone"
+                        tools:ignore="HardcodedText" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -231,10 +240,11 @@
                         android:textSize="16sp"
                         android:padding="16dp"
                         android:textColor="@android:color/black"
-                        android:drawableEnd="@drawable/ic_expand"
+                        app:drawableEndCompat="@drawable/ic_expand"
                         android:drawablePadding="8dp"
                         android:clickable="true"
-                        android:focusable="true" />
+                        android:focusable="true"
+                        tools:ignore="HardcodedText" />
 
                     <TextView
                         android:id="@+id/answer5"
@@ -243,7 +253,8 @@
                         android:text="Yes, our app makes use of Firebase, a cloud based database."
                         android:textSize="14sp"
                         android:padding="16dp"
-                        android:visibility="gone" />
+                        android:visibility="gone"
+                        tools:ignore="HardcodedText" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -268,10 +279,11 @@
                         android:textSize="16sp"
                         android:padding="16dp"
                         android:textColor="@android:color/black"
-                        android:drawableEnd="@drawable/ic_expand"
+                        app:drawableEndCompat="@drawable/ic_expand"
                         android:drawablePadding="8dp"
                         android:clickable="true"
-                        android:focusable="true" />
+                        android:focusable="true"
+                        tools:ignore="HardcodedText" />
 
                     <TextView
                         android:id="@+id/answer6"
@@ -280,7 +292,8 @@
                         android:text="Make sure to enable notifications and alerts will be sent to your phone."
                         android:textSize="14sp"
                         android:padding="16dp"
-                        android:visibility="gone" />
+                        android:visibility="gone"
+                        tools:ignore="HardcodedText" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 

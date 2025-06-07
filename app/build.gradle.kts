@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
-
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -77,6 +77,13 @@ dependencies {
 
     // MPAndroidChart (for PieChart in stats)
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
+    /// Firebase BoM (manages Firebase versions automatically)
+    implementation(platform("com.google.firebase:firebase-bom:33.15.0"))
+
+    // Firebase Auth and Realtime Database
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-database")
 
     // Testing
     testImplementation(libs.junit)

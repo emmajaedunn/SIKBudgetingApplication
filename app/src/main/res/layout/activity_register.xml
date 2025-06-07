@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,7 +9,7 @@
     android:backgroundTint="@color/white"
     android:textAlignment="viewEnd">
 
-    <!-- Logo -->
+    <!-- App logo at the top of the screen -->
     <ImageView
         android:id="@+id/logoImage"
         android:layout_width="301dp"
@@ -22,6 +23,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
 
+    <!-- Tagline text under the logo -->
     <TextView
         android:id="@+id/tagline"
         android:layout_width="wrap_content"
@@ -33,9 +35,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoImage" />
+        app:layout_constraintTop_toBottomOf="@+id/logoImage"
+        tools:ignore="HardcodedText" />
 
-    <!-- Login Card -->
+    <!-- CardView containing the entire registration form -->
     <androidx.cardview.widget.CardView
         android:id="@+id/loginCard"
         android:layout_width="0dp"
@@ -48,12 +51,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tagline">
 
+        <!-- LinearLayout inside the CardView to stack form fields vertically -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="439dp"
             android:orientation="vertical">
 
-            <!-- Register Heading -->
+            <!-- Title of the form: Register -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,7 +71,7 @@
                 android:textStyle="normal"
                 tools:ignore="HardcodedText" />
 
-            <!-- Name Heading -->
+            <!-- Name label -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,7 +82,7 @@
                 android:textSize="16sp"
                 tools:ignore="HardcodedText" />
 
-            <!-- Name Input -->
+            <!-- Name input field -->
             <EditText
                 android:id="@+id/nameEditText"
                 android:layout_width="321dp"
@@ -96,7 +100,7 @@
                 android:textIsSelectable="true"
                 tools:ignore="Autofill,HardcodedText,TextFields" />
 
-            <!-- Username Heading -->
+            <!-- Username label -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -107,7 +111,7 @@
                 android:textSize="16sp"
                 tools:ignore="HardcodedText" />
 
-            <!-- Username Input -->
+            <!-- Username input field -->
             <EditText
                 android:id="@+id/usernameEditText"
                 android:layout_width="321dp"
@@ -124,7 +128,7 @@
                 android:textIsSelectable="true"
                 tools:ignore="Autofill,HardcodedText,TextFields" />
 
-            <!-- Email Heading -->
+            <!-- Email label -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -135,7 +139,7 @@
                 android:textSize="16sp"
                 tools:ignore="HardcodedText" />
 
-            <!-- Email Input -->
+            <!-- Email input field -->
             <EditText
                 android:id="@+id/emailEditText"
                 android:layout_width="321dp"
@@ -153,7 +157,7 @@
                 android:textIsSelectable="true"
                 tools:ignore="Autofill,HardcodedText,TextFields" />
 
-            <!-- Password Heading -->
+            <!-- Password label -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -164,7 +168,7 @@
                 android:textSize="16sp"
                 tools:ignore="HardcodedText" />
 
-            <!-- Password Input -->
+            <!-- Password input field -->
             <EditText
                 android:id="@+id/passwordEditText"
                 android:layout_width="321dp"
@@ -182,7 +186,7 @@
                 android:textIsSelectable="true"
                 tools:ignore="Autofill,HardcodedText,TextFields" />
 
-            <!-- Register Button -->
+            <!-- Register button at the bottom -->
             <Button
                 android:id="@+id/registerButton"
                 android:layout_width="match_parent"
@@ -196,7 +200,7 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Forgot Password -->
+    <!-- Forgot password text -->
     <TextView
         android:id="@+id/forgotPasswordTextView"
         android:layout_width="wrap_content"
@@ -210,6 +214,7 @@
         app:layout_constraintTop_toBottomOf="@id/loginCard"
         tools:ignore="HardcodedText" />
 
+    <!-- Link for users who already have an account -->
     <TextView
         android:id="@+id/loginTextView"
         android:layout_width="wrap_content"

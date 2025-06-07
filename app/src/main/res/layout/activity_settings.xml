@@ -26,13 +26,15 @@
             android:layout_height="match_parent"
             android:layout_gravity="start|center_vertical"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/arrow_back_ic" />
+            android:src="@drawable/arrow_back_ic"
+            android:contentDescription="@string/back_button" />
 
         <TextView
             android:layout_width="330dp"
             android:layout_height="wrap_content"
-            android:paddingRight="8dp"
-            android:text="Settings"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="@string/menu_settings"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="21sp"
@@ -41,15 +43,15 @@
             tools:layout_editor_absoluteY="18dp" />
 
         <ImageButton
-            android:id="@+id/btnNotification"
+            android:id="@+id/btnProfile"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:layout_gravity="start|center_vertical"
-            android:src="@drawable/notifications_ic"
+            android:src="@drawable/account_circle_ic"
             tools:layout_editor_absoluteX="347dp"
-            tools:layout_editor_absoluteY="8dp" />
-
+            tools:layout_editor_absoluteY="8dp"
+            android:contentDescription="@string/profile_page" />
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
@@ -81,7 +83,7 @@
                         android:id="@+id/btnBudgetingGoals"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Budgeting Goals"
+                        android:text="@string/budgeting_goals"
                         android:textAlignment="textStart"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
@@ -93,7 +95,7 @@
                         android:id="@+id/btnManageAccounts"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Manage Accounts"
+                        android:text="@string/manage_account"
                         android:textAlignment="textStart"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
@@ -105,7 +107,7 @@
                         android:id="@+id/btnTransactionCategories"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Transaction Categories"
+                        android:text="@string/transaction_categories"
                         android:textAlignment="textStart"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
@@ -118,7 +120,7 @@
                         android:id="@+id/btnAchievements"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="View Achievements"
+                        android:text="@string/view_achievements"
                         android:textAlignment="textStart"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
@@ -146,13 +148,14 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/notifications_ic"
-                        android:layout_gravity="center_vertical" />
+                        android:layout_gravity="center_vertical"
+                        android:contentDescription="@string/notifications" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Notifications"
+                        android:text="@string/notifications"
                         android:textSize="16sp"
                         android:layout_marginStart="16dp"
                         android:layout_gravity="center_vertical" />
@@ -182,7 +185,7 @@
                         android:id="@+id/btnHelpSupport"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Help &amp; Support"
+                        android:text="@string/help_support"
                         android:textAlignment="textStart"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
@@ -194,7 +197,7 @@
                         android:id="@+id/btnSignOut"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Sign Out"
+                        android:text="@string/sign_out"
                         android:textAlignment="textStart"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
