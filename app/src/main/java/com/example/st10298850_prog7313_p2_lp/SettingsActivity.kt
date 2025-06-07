@@ -100,6 +100,16 @@ class SettingsActivity : AppCompatActivity() {
 
         // Log out and go back to the Main/Login screen
         binding.btnSignOut.setOnClickListener {
+        // Budgeting Goals
+        binding.btnBudgetingGoals.setOnClickListener {
+            startActivity(Intent(this, BudgetGoalActivity::class.java))
+        }
+        binding.btnMultiCurrency.setOnClickListener {
+            startActivity(Intent(this, MultiCurrencyActivity::class.java))
+
+
+        // Sign out
+        binding.btnSignOut?.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // Clear backstack
             startActivity(intent)
@@ -197,3 +207,4 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 }
+    }}

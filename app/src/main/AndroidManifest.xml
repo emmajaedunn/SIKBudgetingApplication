@@ -40,7 +40,9 @@
         <activity android:name=".ManageAccountsActivity" />
         <activity android:name=".ManageCategoriesActivity" />
         <activity android:name=".HelpSupportActivity" />
-        <activity android:name=".AchievementsActivity"/>
+        <activity android:name=".AchievementsActivity" />
+        <activity android:name=".BudgetGoalActivity"/>
+        <activity android:name=".MultiCurrencyActivity"/>
         <activity android:name=".ProfileActivity" />
 
         <!-- FileProvider -->

@@ -15,7 +15,7 @@
     <item
         android:id="@+id/navigation_budget"
         android:icon="@drawable/history_ic"
-        android:title="@string/menu_budget" />
+        android:title="history" />
     <item
         android:id="@+id/navigation_settings"
         android:icon="@drawable/settings_ic"
