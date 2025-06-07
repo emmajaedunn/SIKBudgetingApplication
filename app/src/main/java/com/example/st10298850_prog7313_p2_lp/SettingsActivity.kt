@@ -16,7 +16,6 @@ import android.widget.ImageButton
 
 class SettingsActivity : AppCompatActivity() {
 
-    // View binding for accessing layout elements
     private lateinit var binding: ActivitySettingsBinding
     private val notificationChannelId = "default_channel"
     private val notificationPermissionCode = 1001
@@ -24,45 +23,39 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Inflate the settings layout using ViewBinding
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         requestNotificationPermission()
-        // Setup bottom navigation bar and button click listeners
         setupUI()
         setupClickListeners()
-
-        // Switch starts off
-        binding.switchNotifications.isChecked = false
-
         setupNotificationSwitch()
+
+        // Default state for notifications
+        binding.switchNotifications.isChecked = false
     }
 
-     // Handles bottom navigation bar interactions.
-     // Redirects user to selected screen.
     private fun setupUI() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
-                    startActivity(Intent(this, HomeActivity::class.java)) // Navigate to Home
+                    startActivity(Intent(this, HomeActivity::class.java))
                     true
                 }
                 R.id.navigation_stats -> {
-                    startActivity(Intent(this, StatsActivity::class.java)) // Navigate to Stats
+                    startActivity(Intent(this, StatsActivity::class.java))
                     true
                 }
                 R.id.navigation_add -> {
-                    startActivity(Intent(this, AddTransactionActivity::class.java)) // Navigate to Add Transaction
+                    startActivity(Intent(this, AddTransactionActivity::class.java))
                     true
                 }
                 R.id.navigation_budget -> {
-                    startActivity(Intent(this, TransactionHistoryActivity::class.java)) // Navigate to Budget/History
+                    startActivity(Intent(this, TransactionHistoryActivity::class.java))
                     true
                 }
-                R.id.navigation_settings -> true
                 R.id.navigation_settings -> {
-                    // Already on Settings screen, do nothing
+                    // Already on Settings screen
                     true
                 }
                 else -> false
@@ -70,72 +63,57 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
-    // Attaches click listeners to each settings option button.
     private fun setupClickListeners() {
-        // Navigate to Profile screen
-        val profileButton = findViewById<ImageButton>(R.id.btnProfile)
-        profileButton.setOnClickListener {
+        findViewById<ImageButton>(R.id.btnProfile)?.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
 
-        // Navigate to Manage Categories screen
         binding.btnTransactionCategories.setOnClickListener {
             startActivity(Intent(this, ManageCategoriesActivity::class.java))
         }
 
-        // Navigate to Manage Accounts screen
         binding.btnManageAccounts.setOnClickListener {
             startActivity(Intent(this, ManageAccountsActivity::class.java))
         }
 
-        // Navigate to Achievements screen
         binding.btnAchievements.setOnClickListener {
             startActivity(Intent(this, AchievementsActivity::class.java))
         }
 
-        // Navigate to Help & Support screen
         binding.btnHelpSupport.setOnClickListener {
             startActivity(Intent(this, HelpSupportActivity::class.java))
         }
 
-        // Log out and go back to the Main/Login screen
-        binding.btnSignOut.setOnClickListener {
-        // Budgeting Goals
         binding.btnBudgetingGoals.setOnClickListener {
             startActivity(Intent(this, BudgetGoalActivity::class.java))
         }
+
         binding.btnMultiCurrency.setOnClickListener {
             startActivity(Intent(this, MultiCurrencyActivity::class.java))
+        }
 
-
-        // Sign out
-        binding.btnSignOut?.setOnClickListener {
+        binding.btnSignOut.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // Clear backstack
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()
         }
+        binding.btnViewProfile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+
     }
 
-    /**
-     * Sets up the Notifications switch .
-     */
     private fun setupNotificationSwitch() {
         binding.switchNotifications.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU ||
-                    ActivityCompat.checkSelfPermission(
-                        this,
-                        android.Manifest.permission.POST_NOTIFICATIONS
-                    ) == PackageManager.PERMISSION_GRANTED
+                    ActivityCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS)
+                    == PackageManager.PERMISSION_GRANTED
                 ) {
                     sendSystemNotification("Daily Reminder", "Don't forget to track your spending today!")
                 } else {
-                    Toast.makeText(
-                        this,
-                        "Please grant notification permission to enable this feature.",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Toast.makeText(this, "Please grant notification permission to enable this feature.", Toast.LENGTH_LONG).show()
                     binding.switchNotifications.isChecked = false
                 }
             } else {
@@ -144,16 +122,13 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Sends a system-level notification.
-     */
     private fun sendSystemNotification(title: String, message: String) {
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 notificationChannelId,
-                "SIK Budgeting", // updated channel name
+                "SIK Budgeting",
                 NotificationManager.IMPORTANCE_DEFAULT
             )
             notificationManager.createNotificationChannel(channel)
@@ -169,15 +144,10 @@ class SettingsActivity : AppCompatActivity() {
         notificationManager.notify(1, notification)
     }
 
-    /**
-     * Requests notification permission.
-     */
     private fun requestNotificationPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            if (ActivityCompat.checkSelfPermission(
-                    this,
-                    android.Manifest.permission.POST_NOTIFICATIONS
-                ) != PackageManager.PERMISSION_GRANTED
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED
             ) {
                 ActivityCompat.requestPermissions(
                     this,
@@ -188,9 +158,6 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Handles the result.
-     */
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -207,4 +174,3 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 }
-    }}
