@@ -97,8 +97,7 @@
                 android:layout_height="8dp"
                 android:layout_marginTop="8dp"
                 android:progress="75"
-                android:max="100"
-                android:progressTint="@color/teal_700" />
+                android:max="100" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
