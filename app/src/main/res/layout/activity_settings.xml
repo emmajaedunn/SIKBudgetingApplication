@@ -149,6 +149,20 @@
                         app:iconGravity="start"
                         style="@style/Widget.MaterialComponents.Button.TextButton" />
                 </LinearLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnViewProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="View Profile"
+                    android:textAlignment="textStart"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:backgroundTint="@color/lightblue_color"
+                    android:textColor="@color/white"
+                    app:icon="@drawable/account_circle_ic"
+                    app:iconGravity="start"
+                    style="@style/Widget.MaterialComponents.Button.TextButton" />
+
             </com.google.android.material.card.MaterialCardView>
 
             <!-- Card with Notifications Switch -->
