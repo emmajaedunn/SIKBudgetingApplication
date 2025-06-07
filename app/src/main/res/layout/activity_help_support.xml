@@ -114,7 +114,7 @@
                         android:id="@+id/question2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="How can I track my expenses?"
+                        android:text="How can I see my progress with the budget?"
                         android:textSize="16sp"
                         android:padding="16dp"
                         android:textColor="@android:color/black"
@@ -127,7 +127,7 @@
                         android:id="@+id/answer2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Use the Transactions section to add and categorize your expenses."
+                        android:text="Head over to stats to see the progress with your selected budgets."
                         android:textSize="14sp"
                         android:padding="16dp"
                         android:visibility="gone" />
@@ -151,7 +151,7 @@
                         android:id="@+id/question3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Can I manage multiple accounts?"
+                        android:text="What are the achievements for?"
                         android:textSize="16sp"
                         android:padding="16dp"
                         android:textColor="@android:color/black"
@@ -164,7 +164,8 @@
                         android:id="@+id/answer3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Yes, navigate to Manage Accounts to add or edit your accounts."
+                        android:text="Our achievemnets help you stay encouraged and gamify your
+                        budgeting experience to make it more enjoyable."
                         android:textSize="14sp"
                         android:padding="16dp"
                         android:visibility="gone" />
@@ -201,7 +202,8 @@
                         android:id="@+id/answer4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Go to Settings > Account > Change Password and follow the prompts."
+                        android:text="Go to Settings then to Profile and then you will be able to view all
+                        your information and change your password."
                         android:textSize="14sp"
                         android:padding="16dp"
                         android:visibility="gone" />
@@ -225,7 +227,7 @@
                         android:id="@+id/question5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Can I export my data?"
+                        android:text="Will my data be saved on the app?"
                         android:textSize="16sp"
                         android:padding="16dp"
                         android:textColor="@android:color/black"
@@ -238,7 +240,7 @@
                         android:id="@+id/answer5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Yes, go to Settings > Export to back up your data to PDF or CSV."
+                        android:text="Yes, our app makes use of Firebase, a cloud based database."
                         android:textSize="14sp"
                         android:padding="16dp"
                         android:visibility="gone" />
@@ -262,7 +264,7 @@
                         android:id="@+id/question6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Who can I contact for support?"
+                        android:text="How to ensure i don't forget to budget?"
                         android:textSize="16sp"
                         android:padding="16dp"
                         android:textColor="@android:color/black"
@@ -275,7 +277,7 @@
                         android:id="@+id/answer6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Email us at support@example.com or use the Contact Support option."
+                        android:text="Make sure to enable notifications and alerts will be sent to your phone."
                         android:textSize="14sp"
                         android:padding="16dp"
                         android:visibility="gone" />
