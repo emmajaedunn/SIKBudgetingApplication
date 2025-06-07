@@ -27,6 +27,10 @@ class SettingsActivity : AppCompatActivity() {
         requestNotificationPermission()
         setupUI()
         setupClickListeners()
+
+        // Switch starts off
+        binding.switchNotifications.isChecked = false
+
         setupNotificationSwitch()
     }
 
