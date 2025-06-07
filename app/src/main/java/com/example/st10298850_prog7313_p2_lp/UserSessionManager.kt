@@ -6,7 +6,15 @@ import android.content.SharedPreferences
 object UserSessionManager {
     private const val PREF_NAME = "user_session"
     private const val KEY_USER_ID = "user_id"
+    fun saveCurrency(context: Context, currency: String) {
+        val prefs = context.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        prefs.edit().putString("currency", currency).apply()
+    }
 
+    fun getCurrency(context: Context): String {
+        val prefs = context.getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        return prefs.getString("currency", "ZAR") ?: "ZAR"
+    }
     private fun getPreferences(context: Context): SharedPreferences {
         return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
     }

@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.st10298850_prog7313_p2_lp.databinding.ActivitySettingsBinding
-import com.example.st10298850_prog7313_p2_lp.HelpSupportActivity
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -74,6 +73,13 @@ class SettingsActivity : AppCompatActivity() {
             startActivity(Intent(this, HelpSupportActivity::class.java))
         }
 
+        // Budgeting Goals
+        binding.btnBudgetingGoals.setOnClickListener {
+            startActivity(Intent(this, BudgetGoalActivity::class.java))
+        }
+        binding.btnMultiCurrency.setOnClickListener {
+            startActivity(Intent(this, MultiCurrencyActivity::class.java))
+
 
         // Sign out
         binding.btnSignOut?.setOnClickListener {
@@ -83,4 +89,4 @@ class SettingsActivity : AppCompatActivity() {
             finish()
         }
     }
-}
+    }}

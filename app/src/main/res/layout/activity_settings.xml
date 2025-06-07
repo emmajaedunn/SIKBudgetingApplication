@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@color/white">
 
     <!-- Toolbar Layout -->
     <androidx.appcompat.widget.Toolbar
@@ -85,7 +85,23 @@
                         android:textAlignment="textStart"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
+                        android:backgroundTint="@color/lightblue_color"
+                        android:textColor="@color/white"
                         app:icon="@drawable/target_ic"
+                        app:iconGravity="start"
+                        style="@style/Widget.MaterialComponents.Button.TextButton" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnMultiCurrency"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Multi-Currency"
+                        android:textAlignment="textStart"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:backgroundTint="@color/lightblue_color"
+                        android:textColor="@color/white"
+                        app:icon="@drawable/ic_currency_exchange"
                         app:iconGravity="start"
                         style="@style/Widget.MaterialComponents.Button.TextButton" />
 
@@ -97,6 +113,8 @@
                         android:textAlignment="textStart"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
+                        android:backgroundTint="@color/lightblue_color"
+                        android:textColor="@color/white"
                         app:icon="@drawable/wallet_ic"
                         app:iconGravity="start"
                         style="@style/Widget.MaterialComponents.Button.TextButton" />
@@ -109,11 +127,12 @@
                         android:textAlignment="textStart"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
+                        android:backgroundTint="@color/lightblue_color"
+                        android:textColor="@color/white"
                         app:icon="@drawable/sell_ic"
                         app:iconGravity="start"
                         style="@style/Widget.MaterialComponents.Button.TextButton" />
 
-                    <!-- NEW: Achievements Button -->
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnAchievements"
                         android:layout_width="match_parent"
@@ -122,6 +141,8 @@
                         android:textAlignment="textStart"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
+                        android:backgroundTint="@color/lightblue_color"
+                        android:textColor="@color/white"
                         app:icon="@drawable/icon_badge"
                         app:iconGravity="start"
                         style="@style/Widget.MaterialComponents.Button.TextButton" />
@@ -186,6 +207,8 @@
                         android:textAlignment="textStart"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
+                        android:backgroundTint="@color/lightblue_color"
+                        android:textColor="@color/white"
                         app:icon="@drawable/info_2ic"
                         app:iconGravity="start"
                         style="@style/Widget.MaterialComponents.Button.TextButton" />
@@ -198,6 +221,8 @@
                         android:textAlignment="textStart"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
+                        android:backgroundTint="@color/lightblue_color"
+                        android:textColor="@color/white"
                         app:icon="@drawable/logout_ic"
                         app:iconGravity="start"
                         style="@style/Widget.MaterialComponents.Button.TextButton" />
