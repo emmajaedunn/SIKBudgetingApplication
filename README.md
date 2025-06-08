@@ -43,6 +43,18 @@ Designed with a clean and intuitive interface, SIK is the perfect tool for build
 - **Budget Tracker**  
   Set spending limits, track your current budget, and get alerts as you approach your limit.
 
+## Unique Features
+In addition to core budgeting functionalities, SIK Budgeting App includes three features designed to enhance user experience and help keep the user on top of their budgeting:
+
+- **Multi-Currency Support**
+Easily manage transactions in multiple currencies—ideal for international students or users with multiple income sources.
+
+- **Smart Notifications**
+Stay on top of your finances with timely alerts that send notifications to remind you to add your transactions, to keep up to date with your budgeting.
+
+- **Integrated FAQ Page**
+Access a built-in Frequently Asked Questions page for quick answers to commonly asked questions.
+
 ## User Interface Design
 Screens Overview:
 - Welcome / Onboarding – Guide users through setup and permissions
