@@ -28,7 +28,7 @@ class ProfileActivity : AppCompatActivity() {
             finish() // Close this activity and go back
         }
 
-        // Initialize FirebaseAuth
+        // Initialize FirebaseAuthentication
         auth = FirebaseAuth.getInstance()
 
         // Get currently logged-in user's UID
