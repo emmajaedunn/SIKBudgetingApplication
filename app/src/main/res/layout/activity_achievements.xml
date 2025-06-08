@@ -3,14 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    tools:context=".AchievementsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="64dp"
+        android:paddingBottom="16dp">
 
+        <!-- Back Button -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/arrow_back_ic"
+            android:contentDescription="Back"
+            android:layout_gravity="start"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Level Label -->
         <TextView
             android:id="@+id/tvLevelLabel"
             android:layout_width="wrap_content"
@@ -21,6 +37,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="12dp" />
 
+        <!-- Progress Bar -->
         <ProgressBar
             android:id="@+id/progressBarAchievement"
             style="@android:style/Widget.ProgressBar.Horizontal"
@@ -28,8 +45,9 @@
             android:layout_height="wrap_content"
             android:progress="0"
             android:max="100"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="24dp" />
 
+        <!-- Badge Row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,7 +94,6 @@
                 android:layout_margin="8dp"
                 android:src="@drawable/badge_5"
                 android:contentDescription="Platinum Badge" />
-
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

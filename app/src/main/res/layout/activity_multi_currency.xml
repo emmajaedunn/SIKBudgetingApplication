@@ -4,7 +4,40 @@
     android:orientation="vertical"
     android:padding="32dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- Toolbar -->
+    <LinearLayout
+        android:id="@+id/toolbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="48dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/arrow_back_ic"
+            android:contentDescription="Back"/>
+
+        <TextView
+            android:id="@+id/tvCurrencyTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Currency Settings"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#161A36"
+            android:layout_marginStart="16dp"/>
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"

@@ -6,44 +6,57 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <!-- Title Card Centered -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/titleCard"
+    <!-- Toolbar Container with Back Button and Title -->
+    <LinearLayout
+        android:id="@+id/toolbarLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="2dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="48dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        android:layout_marginTop="48dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:backgroundTint="@color/white">
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:scaleType="center"
+            android:contentDescription="Back"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/arrow_back_ic" />
 
         <TextView
             android:id="@+id/tvStatsTitle"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="Analytics"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:gravity="center"
-            android:padding="18dp"
-            android:textColor="#161A36"/>
-    </com.google.android.material.card.MaterialCardView>
+            android:textColor="#161A36"
+            android:gravity="center_vertical"
+            android:layout_weight="1" />
+    </LinearLayout>
 
-    <!-- Summary Values Card Centered -->
+    <!-- Summary Values Card -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/summaryCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="16dp"
         app:cardElevation="2dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="48dp"
-        app:layout_constraintTop_toBottomOf="@id/titleCard"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbarLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:backgroundTint="@color/white">
@@ -71,6 +84,7 @@
                     android:textStyle="bold"
                     android:textSize="16sp"/>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -87,6 +101,7 @@
                     android:textStyle="bold"
                     android:textSize="16sp"/>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -106,17 +121,17 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Pie Chart Card Centered -->
+    <!-- Pie Chart Card -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/pieCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="16dp"
         app:cardElevation="2dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="32dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="48dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintTop_toBottomOf="@id/summaryCard"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -138,7 +153,7 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Bottom Navigation View -->
+    <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
