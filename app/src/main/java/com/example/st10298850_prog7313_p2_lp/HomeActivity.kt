@@ -3,54 +3,96 @@ package com.example.st10298850_prog7313_p2_lp
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.st10298850_prog7313_p2_lp.data.AppDatabase
-import com.example.st10298850_prog7313_p2_lp.data.UserDao
 import com.example.st10298850_prog7313_p2_lp.databinding.ActivityHomeBinding
-import com.example.st10298850_prog7313_p2_lp.repositories.AccountRepository
 import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
-import com.example.st10298850_prog7313_p2_lp.viewmodels.HomeViewModel
-import com.example.st10298850_prog7313_p2_lp.viewmodels.HomeViewModelFactory
-
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HomeActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var viewModel: HomeViewModel
+    private val database by lazy { AppDatabase.getDatabase(this) }
+    private var currentUserId: Long = -1L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        currentUserId = getCurrentUserId()
+        if (currentUserId == -1L) return
+
+        // Load user name once
+        loadUserName(currentUserId)
+
+        setupClickListeners()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Refresh achievement progress on each resume
+        if (currentUserId != -1L) {
+            lifecycleScope.launch {
+                val transactionCount = withContext(Dispatchers.IO) {
+                    database.transactionDao().getTransactionCountForUser(currentUserId)
+                }
+                val progress = (transactionCount * 25).coerceAtMost(100)
+                updateAchievementUI(progress)
+            }
+        }
+    }
+
+    private fun getCurrentUserId(): Long {
         val userId = UserSessionManager.getUserId(this)
         if (userId == -1L) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
-            return
+        }
+        return userId
+    }
+
+    private fun loadUserName(userId: Long) {
+        lifecycleScope.launch {
+            val userName = withContext(Dispatchers.IO) {
+                database.userDao().getUserById(userId)?.username ?: "User"
+            }
+            binding.tvWelcome.text = "Welcome, $userName"
+        }
+    }
+
+    private fun updateAchievementUI(progress: Int) {
+        binding.progressAchievement.progress = progress
+
+        val levelLabel = when {
+            progress >= 100 -> "Platinum"
+            progress >= 75 -> "Gold"
+            progress >= 50 -> "Silver"
+            progress >= 25 -> "Bronze"
+            else -> "Starter"
         }
 
-        val userRepository = AccountRepository(
-            AppDatabase.getDatabase(this).accountDao(),
-            AppDatabase.getDatabase(this).userDao()
-        )
-        viewModel = ViewModelProvider(
-            this,
-            HomeViewModelFactory(application, userRepository)
-        )[HomeViewModel::class.java]
+        binding.tvUserTitle.text = levelLabel
 
-        viewModel.userName.observe(this) { name ->
-            binding.tvWelcome.text = "Welcome, $name"
+        val badgeResId = when (levelLabel) {
+            "Platinum" -> R.drawable.badge_5
+            "Gold" -> R.drawable.badge_4
+            "Silver" -> R.drawable.badge_3
+            "Bronze" -> R.drawable.badge_2
+            else -> R.drawable.badge_1
         }
+        binding.imgRecentBadge.setImageResource(badgeResId)
+    }
 
-        viewModel.loadUserName(userId)
-
-        // Set click listeners for navigation buttons
+    private fun setupClickListeners() {
         binding.btnAddTransaction.setOnClickListener {
             startActivity(Intent(this, AddTransactionActivity::class.java))
         }
 
         binding.btnManageBudgets.setOnClickListener {
-            startActivity(Intent(this, TransactionHistoryActivity::class.java)) // Budget page
+            startActivity(Intent(this, TransactionHistoryActivity::class.java))
         }
 
         binding.btnAnalytics.setOnClickListener {
@@ -59,312 +101,6 @@ class HomeActivity : AppCompatActivity() {
 
         binding.btnSettings.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
-        }
-
-        // Achievement level placeholder
-        binding.tvAchievementLevel.text = "Your achievement level: [Coming Soon]"
-
-
-        // Setup bottom navigation
-        binding.bottomNavigation.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.navigation_home -> {
-                    startActivity(Intent(this, HomeActivity::class.java))
-                    true
-                }
-                R.id.navigation_stats -> {
-                    startActivity(Intent(this, StatsActivity::class.java))
-                    true
-                }
-                R.id.navigation_add -> {
-                    startActivity(Intent(this, AddTransactionActivity::class.java))
-                    true
-                }
-                R.id.navigation_budget -> {
-                    startActivity(Intent(this, TransactionHistoryActivity::class.java))
-                    true
-                }
-                R.id.navigation_settings -> {
-                    startActivity(Intent(this, SettingsActivity::class.java))
-                    true
-                }
-                else -> false
-            }
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-/*
-class HomeActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityHomeBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        val userId = UserSessionManager.getUserId(this)
-        if (userId == -1L) {
-            // User not logged in, redirect to login screen
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-            return
-        }
-
-        // Get the username or fallback to "User"
-        val username = UserSessionManager.getUsername(this) ?: "User"
-        binding.tvWelcome.text = "Welcome, $username"
-
-        // Set click listeners for navigation buttons
-        binding.btnAddTransaction.setOnClickListener {
-            startActivity(Intent(this, AddTransactionActivity::class.java))
-        }
-
-        binding.btnManageBudgets.setOnClickListener {
-            startActivity(Intent(this, TransactionHistoryActivity::class.java)) // Budget page
-        }
-
-        binding.btnAnalytics.setOnClickListener {
-            startActivity(Intent(this, StatsActivity::class.java))
-        }
-
-        binding.btnSettings.setOnClickListener {
-            startActivity(Intent(this, SettingsActivity::class.java))
-        }
-
-        // Achievement level placeholder
-        binding.tvAchievementLevel.text = "Your achievement level: [Coming Soon]"
-    }
-} */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*package com.example.st10298850_prog7313_p2_lp
-
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.example.st10298850_prog7313_p2_lp.databinding.ActivityHomeBinding
-import android.content.Intent
-import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
-import java.util.*
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.st10298850_prog7313_p2_lp.adapters.CategoryTotalAdapter
-import com.example.st10298850_prog7313_p2_lp.viewmodels.HomeViewModel
-import androidx.activity.viewModels
-import android.app.Dialog
-import android.view.Window
-import android.widget.Toast
-import com.example.st10298850_prog7313_p2_lp.data.BudgetGoal
-import com.example.st10298850_prog7313_p2_lp.databinding.DialogBudgetGoalsBinding
-import com.example.st10298850_prog7313_p2_lp.data.AppDatabase
-import com.example.st10298850_prog7313_p2_lp.data.BudgetGoalRepository
-import com.example.st10298850_prog7313_p2_lp.data.CategoryTotal
-import com.example.st10298850_prog7313_p2_lp.viewmodels.HomeViewModelFactory
-import com.google.android.material.datepicker.MaterialDatePicker
-import java.text.SimpleDateFormat
-
-
-/**
- * HomeActivity is the main screen of the application.
- * It displays category totals, budget goals, and provides navigation to other features.
- */
-class HomeActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityHomeBinding
-    private lateinit var categoryTotalAdapter: CategoryTotalAdapter
-    // ViewModel initialization using viewModels delegate
-    private val viewModel: HomeViewModel by viewModels {
-        HomeViewModelFactory(
-            application,
-            BudgetGoalRepository(AppDatabase.getDatabase(this).budgetGoalDao())
-        )
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        // Check if user is logged in, redirect to login if not
-        val userId = UserSessionManager.getUserId(this)
-        if (userId == -1L) {
-            // Handle user not logged in, e.g., redirect to login
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        } else {
-            setupUI()
-            setupRecyclerView()
-            observeCategoryTotals()
-            setupDateRangePicker()
-            viewModel.loadCategoryTotals() // Load all category totals when activity starts
-            viewModel.loadBudgetGoals() // Load budget goals when activity starts
-            observeBudgetGoals()
-        }
-    }
-    /**
-     * Sets up the UI components including bottom navigation and click listeners.
-     */
-    private fun setupUI() {
-        binding.setGoalsButton.setOnClickListener {
-            showBudgetGoalsDialog()
-        }
-
-        // Setup bottom navigation
-        binding.bottomNavigation.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.navigation_home -> {
-                    startActivity(Intent(this, DashboardActivity::class.java))
-                    true
-                }
-                R.id.navigation_stats -> {
-                    startActivity(Intent(this, StatsActivity::class.java))
-                    true
-                }
-                R.id.navigation_add -> {
-                    startActivity(Intent(this, AddTransactionActivity::class.java))
-                    true
-                }
-                R.id.navigation_budget -> {
-                    startActivity(Intent(this, TransactionHistoryActivity::class.java))
-                    true
-                }
-                R.id.navigation_settings -> {
-                    startActivity(Intent(this, SettingsActivity::class.java))
-                    true
-                }
-                else -> false
-            }
-        }
-
-        binding.btnSelectDateRange.setOnClickListener {
-            showDateRangePicker()
-        }
-    }
-    /**
-     * Sets up the RecyclerView for displaying category totals.
-     */
-    private fun setupRecyclerView() {
-        categoryTotalAdapter = CategoryTotalAdapter()
-        binding.rvCategoryTotals.apply {
-            layoutManager = LinearLayoutManager(this@HomeActivity)
-            adapter = categoryTotalAdapter
-        }
-    }
-    /**
-     * Observes changes in category totals and updates the UI accordingly.
-     */
-    private fun observeCategoryTotals() {
-        viewModel.categoryTotals.observe(this) { categoryTotals ->
-            categoryTotalAdapter.submitList(categoryTotals)
-            updateTotalSpending(categoryTotals)
-        }
-    }
-    /**
-     * Sets up the date range picker functionality.
-     */
-    private fun setupDateRangePicker() {
-        binding.btnSelectDateRange.setOnClickListener {
-            showDateRangePicker()
-        }
-    }
-    /**
-     * Shows the date range picker dialog and handles the selected date range.
-     */
-    private fun showDateRangePicker() {
-        val dateRangePicker = MaterialDatePicker.Builder.dateRangePicker()
-            .setTitleText("Select Date Range")
-            .build()
-
-        dateRangePicker.addOnPositiveButtonClickListener { selection ->
-            val startDate = selection.first
-            val endDate = selection.second
-            viewModel.loadCategoryTotalsForDateRange(startDate, endDate)
-
-            // Update UI to show selected date range
-            val dateFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
-            binding.tvDateRange.text = "${dateFormat.format(Date(startDate))} - ${dateFormat.format(Date(endDate))}"
-        }
-
-        dateRangePicker.show(supportFragmentManager, "DATE_RANGE_PICKER")
-    }
-    /**
-     * Shows a dialog for setting budget goals.
-     */
-    private fun showBudgetGoalsDialog() {
-        val dialog = Dialog(this)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        val dialogBinding = DialogBudgetGoalsBinding.inflate(layoutInflater)
-        dialog.setContentView(dialogBinding.root)
-
-        dialogBinding.btnSaveBudgetGoals.setOnClickListener {
-            val shortTermAmount = dialogBinding.etShortTermAmount.text.toString().toDoubleOrNull()
-            val longTermAmount = dialogBinding.etLongTermAmount.text.toString().toDoubleOrNull()
-
-            if (shortTermAmount != null && longTermAmount != null) {
-                viewModel.saveBudgetGoals(
-                    BudgetGoal(name = "Short Term Goal", goalAmount = shortTermAmount, userId = UserSessionManager.getUserId(this)),
-                    BudgetGoal(name = "Long Term Goal", goalAmount = longTermAmount, userId = UserSessionManager.getUserId(this))
-                )
-                dialog.dismiss()
-            } else {
-                Toast.makeText(this, "Please fill all fields with valid numbers", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        dialog.show()
-    }
-    /**
-     * Observes changes in budget goals and updates the UI accordingly.
-     */
-    private fun observeBudgetGoals() {
-        viewModel.budgetGoals.observe(this) { goals ->
-            val shortTermGoal = goals.find { it.name == "Short Term Goal" }
-            val longTermGoal = goals.find { it.name == "Long Term Goal" }
-
-            binding.minGoalText.text = "Short Term Goal: R${shortTermGoal?.goalAmount ?: 0}"
-            binding.maxGoalText.text = "Long Term Goal: R${longTermGoal?.goalAmount ?: 0}"
-        }
-    }
-    /**
-     * Updates the total spending display based on category totals.
-     */
-    private fun updateTotalSpending(categoryTotals: List<CategoryTotal>) {
-        val totalSpending = categoryTotals.sumOf { it.totalAmount }
-        binding.tvTotalSpending.text = "Total Spending: R%.2f".format(totalSpending)
-    }
-} */

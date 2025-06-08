@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.st10298850_prog7313_p2_lp.data.Category
 import com.example.st10298850_prog7313_p2_lp.databinding.ItemCategoryBinding
+import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 
 class CategoryAdapter(
     private val onEditClick: (Category) -> Unit,
@@ -25,9 +26,18 @@ class CategoryAdapter(
     inner class CategoryViewHolder(private val binding: ItemCategoryBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(category: Category) {
             binding.tvCategoryName.text = category.name
-            binding.tvBudgetAmount.text = String.format("R%.2f", category.budgetedAmount)
+            binding.tvBudgetAmount.text = formatCurrency(category.budgetedAmount)
             binding.btnEdit.setOnClickListener { onEditClick(category) }
             binding.btnDelete.setOnClickListener { onDeleteClick(category) }
+        }
+
+        private fun formatCurrency(amount: Double): String {
+            val currencyCode = UserSessionManager.getCurrency(binding.root.context)
+            val currency = java.util.Currency.getInstance(currencyCode)
+            val format = java.text.NumberFormat.getCurrencyInstance().apply {
+                this.currency = currency
+            }
+            return format.format(amount)
         }
     }
 

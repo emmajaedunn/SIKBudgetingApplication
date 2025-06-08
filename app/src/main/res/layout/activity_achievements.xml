@@ -3,80 +3,128 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@android:color/white"
+    tools:context=".AchievementsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:gravity="center_horizontal"
+        android:padding="28dp"
+        android:paddingTop="79dp">
 
+        <!-- Top: Back Button and Title -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="18dp">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/arrow_back_ic"
+                android:contentDescription="Back"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="10dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Achievements"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#171717"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <!-- Level Label -->
         <TextView
             android:id="@+id/tvLevelLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Level: Starter"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="8dp" />
 
+        <!-- Progress Bar -->
         <ProgressBar
             android:id="@+id/progressBarAchievement"
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="16dp"
             android:progress="0"
             android:max="100"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="10dp"
+            android:progressDrawable="@drawable/progress_achievement_custom" />
 
+        <!-- Centered, Spaced Motivation Text -->
+        <TextView
+            android:id="@+id/tvMotivation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Keep going, you’re doing great! 🚀"
+            android:textSize="16sp"
+            android:textColor="#008577"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="28dp"/>
+
+        <!-- Badges Row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="12dp">
+            android:layout_marginBottom="8dp">
 
             <ImageView
                 android:id="@+id/badgeStarter"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_margin="8dp"
                 android:src="@drawable/badge_1"
                 android:contentDescription="Starter Badge" />
 
             <ImageView
                 android:id="@+id/badgeBronze"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_margin="8dp"
                 android:src="@drawable/badge_2"
                 android:contentDescription="Bronze Badge" />
 
             <ImageView
                 android:id="@+id/badgeSilver"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_margin="8dp"
                 android:src="@drawable/badge_3"
                 android:contentDescription="Silver Badge" />
 
             <ImageView
                 android:id="@+id/badgeGold"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_margin="8dp"
                 android:src="@drawable/badge_4"
                 android:contentDescription="Gold Badge" />
 
             <ImageView
                 android:id="@+id/badgePlatinum"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_margin="8dp"
                 android:src="@drawable/badge_5"
                 android:contentDescription="Platinum Badge" />
-
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

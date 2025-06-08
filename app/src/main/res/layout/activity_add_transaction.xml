@@ -5,19 +5,21 @@
     android:layout_height="match_parent"
     android:background="#F5F5F5">
 
-    <androidx.cardview.widget.CardView
+    <ScrollView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="4dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <ScrollView
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -36,8 +38,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@android:drawable/ic_menu_close_clear_cancel"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                         />
+                        android:background="?attr/selectableItemBackgroundBorderless" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -45,6 +46,7 @@
                         android:text="@string/new_transaction"
                         android:textSize="20sp"
                         android:textStyle="bold"
+                        android:textColor="@color/lightblue_color"
                         android:layout_centerInParent="true" />
                 </RelativeLayout>
 
@@ -53,6 +55,9 @@
                     android:id="@+id/tabLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:tabIndicatorColor="@color/lightblue_color"
+                    app:tabSelectedTextColor="@color/lightblue_color"
+                    app:tabTextColor="#888888"
                     app:tabMode="fixed"
                     app:tabGravity="fill"
                     android:layout_marginBottom="16dp">
@@ -66,7 +71,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/income" />
-
                 </com.google.android.material.tabs.TabLayout>
 
                 <!-- Amount Display -->
@@ -77,7 +81,7 @@
                     android:hint="@string/enter_amount"
                     android:textSize="36sp"
                     android:textStyle="bold"
-                    android:textColor="#FF9800"
+                    android:textColor="@color/lightblue_color"
                     android:gravity="center"
                     android:layout_marginTop="24dp"
                     android:layout_marginBottom="8dp"
@@ -185,76 +189,12 @@
                             android:contentDescription="@string/upload_receipt"
                             android:scaleType="centerInside"
                             android:adjustViewBounds="true"
-                            android:padding="8dp"/>
+                            android:padding="8dp"
+                            android:clickable="true"
+                            android:focusable="true"/>
 
                     </FrameLayout>
-
                 </com.google.android.material.textfield.TextInputLayout>
-
-<!--                <com.google.android.material.materialswitch.MaterialSwitch-->
-<!--                    android:id="@+id/switchRepeat"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="@string/repeat_transaction"-->
-<!--                    android:layout_marginTop="16dp"-->
-<!--                    android:layout_marginBottom="8dp" />-->
-
-<!--                &lt;!&ndash; Container for Repeat Settings, initially hidden &ndash;&gt;-->
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/repeatSettingsContainer"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:visibility="gone"-->
-<!--                    android:layout_marginTop="16dp">-->
-
-<!--                    &lt;!&ndash; Repeat Interval Spinner &ndash;&gt;-->
-<!--                    <com.google.android.material.textfield.TextInputLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:hint="@string/repeat_every"-->
-<!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
-
-<!--                        <Spinner-->
-<!--                            android:id="@+id/spinnerRepeatInterval"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content" />-->
-<!--                    </com.google.android.material.textfield.TextInputLayout>-->
-
-<!--                    &lt;!&ndash; Optionally, Repeat Until Date Picker &ndash;&gt;-->
-<!--                    <com.google.android.material.textfield.TextInputLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:hint="@string/repeat_until"-->
-<!--                        android:layout_marginTop="16dp"-->
-<!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
-
-<!--                        <com.google.android.material.textfield.TextInputEditText-->
-<!--                            android:id="@+id/etRepeatUntil"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:inputType="none"-->
-<!--                            android:focusable="false"-->
-<!--                            android:clickable="true"-->
-<!--                            android:focusableInTouchMode="false" />-->
-<!--                    </com.google.android.material.textfield.TextInputLayout>-->
-
-<!--                    &lt;!&ndash; Optionally, Repeat for X Occurrences &ndash;&gt;-->
-<!--                    <com.google.android.material.textfield.TextInputLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:hint="@string/repeat_for"-->
-<!--                        android:layout_marginTop="16dp"-->
-<!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">-->
-
-<!--                        <com.google.android.material.textfield.TextInputEditText-->
-<!--                            android:id="@+id/etRepeatCount"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:inputType="number" />-->
-<!--                    </com.google.android.material.textfield.TextInputLayout>-->
-
-<!--                </LinearLayout>-->
 
                 <!-- Submit Button -->
                 <Button
@@ -262,10 +202,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/add_transaction"
-                    android:textColor="#FFFFFF"
-                    android:backgroundTint="#6200EE"
+                    android:textColor="@color/white"
+                    android:backgroundTint="@color/lightblue_color"
                     android:layout_marginTop="24dp" />
+
             </LinearLayout>
-        </ScrollView>
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

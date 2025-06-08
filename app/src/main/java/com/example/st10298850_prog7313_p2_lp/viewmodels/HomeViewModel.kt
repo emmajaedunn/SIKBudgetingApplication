@@ -5,7 +5,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 import com.example.st10298850_prog7313_p2_lp.repositories.AccountRepository
 import kotlinx.coroutines.launch
 

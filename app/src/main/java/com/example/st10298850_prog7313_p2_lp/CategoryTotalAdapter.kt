@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.st10298850_prog7313_p2_lp.data.CategoryTotal
 import com.example.st10298850_prog7313_p2_lp.databinding.ItemCategoryTotalBinding
+import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 
 class CategoryTotalAdapter : ListAdapter<CategoryTotal, CategoryTotalAdapter.ViewHolder>(CategoryTotalDiffCallback()) {
 
@@ -23,7 +24,16 @@ class CategoryTotalAdapter : ListAdapter<CategoryTotal, CategoryTotalAdapter.Vie
         fun bind(categoryTotal: CategoryTotal) {
             binding.tvCategoryName.text = categoryTotal.categoryName
             binding.tvTransactionCount.text = "${categoryTotal.transactionCount} transactions"
-            binding.tvTotalAmount.text = String.format("R%.2f", categoryTotal.totalAmount)
+            binding.tvTotalAmount.text = formatCurrency(categoryTotal.totalAmount)
+        }
+
+        private fun formatCurrency(amount: Double): String {
+            val currencyCode = UserSessionManager.getCurrency(binding.root.context)
+            val currency = java.util.Currency.getInstance(currencyCode)
+            val format = java.text.NumberFormat.getCurrencyInstance().apply {
+                this.currency = currency
+            }
+            return format.format(amount)
         }
     }
 

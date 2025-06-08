@@ -12,8 +12,8 @@ import com.example.st10298850_prog7313_p2_lp.databinding.ActivityManageCategorie
 import com.example.st10298850_prog7313_p2_lp.databinding.DialogEditCategoryBinding
 import com.example.st10298850_prog7313_p2_lp.data.AppDatabase
 import com.example.st10298850_prog7313_p2_lp.data.Category
-import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 import kotlinx.coroutines.launch
+import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 import com.example.st10298850_prog7313_p2_lp.ManageCategoriesActivity
 
 /**
@@ -88,9 +88,10 @@ class ManageCategoriesActivity : AppCompatActivity() {
     private fun updateTotalBudget(userId: Long) {
         lifecycleScope.launch {
             val totalBudget = database.categoryDao().getTotalBudgetForUser(userId) ?: 0.0
-            binding.tvTotalBudget.text = String.format("R%.2f", totalBudget)
+            binding.tvTotalBudget.text = formatCurrency(totalBudget)
         }
     }
+
 
     /**
      * Displays a dialog for adding or editing a category.
@@ -178,4 +179,13 @@ class ManageCategoriesActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+    private fun formatCurrency(amount: Double): String {
+        val currencyCode = UserSessionManager.getCurrency(this)
+        val currency = java.util.Currency.getInstance(currencyCode)
+        val format = java.text.NumberFormat.getCurrencyInstance().apply {
+            this.currency = currency
+        }
+        return format.format(amount)
+    }
+
 }

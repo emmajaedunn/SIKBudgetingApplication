@@ -10,11 +10,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-/**
- * AppDatabase is the main database class for the application.
- * It uses Room, a persistence library, to manage SQLite operations.
- * This class follows the singleton pattern to ensure only one instance of the database is created.
- */
+
 @Database(
     entities = [User::class, Transaction::class, Account::class, BudgetGoal::class, Category::class, MonthlyGoal::class],
     version = 7, // Database version, increment when schema changes
@@ -79,19 +75,6 @@ abstract class AppDatabase : RoomDatabase() {
 
 
 
-            /*.addCallback(object : RoomDatabase.Callback() {
-
-                // Called when the database is created for the first time
-                override fun onCreate(db: SupportSQLiteDatabase) {
-                    super.onCreate(db)
-                    // Populate the database in the background
-                    CoroutineScope(Dispatchers.IO).launch {
-                        seedDatabase(getDatabase(context))
-                    }
-                }
-            })*/
-
-
 
             .build()
         }
@@ -121,28 +104,6 @@ abstract class AppDatabase : RoomDatabase() {
 
             // Add more seeding logic if needed
         }
-
-        /*private suspend fun seedDatabase(database: AppDatabase) {
-            ///// ADDED THIS
-            val accountRepository = AccountRepository(
-            database.accountDao(),
-            database.userDao())
-            //
-            //
-            // val userDao = database.userDao()
-            // Check if the database is empty
-            if (userDao.getUserCount() == 0) {
-                // Create an initial admin user
-                val initialUser = User(
-                    email = "admin@gmail.com",
-                    password = "Admin123$",
-                    name = "Admin",
-                    username = "admin"
-                )
-                userDao.insertUser(initialUser)
-            }
-            // Add more seeding logic here as needed
-        }*/
 
         /**
          * Deletes the existing database.

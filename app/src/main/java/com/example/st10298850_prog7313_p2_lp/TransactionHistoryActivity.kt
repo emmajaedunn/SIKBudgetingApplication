@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.st10298850_prog7313_p2_lp.databinding.ActivityTransactionHistoryBinding
-import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.example.st10298850_prog7313_p2_lp.viewmodels.TransactionHistoryViewModelFactory
@@ -16,11 +15,7 @@ import android.app.Dialog
 import android.view.Window
 import android.widget.ImageView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
-import android.graphics.drawable.Drawable
+import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 import android.widget.Toast
 import java.io.File
 import androidx.core.content.FileProvider
@@ -90,29 +85,6 @@ class TransactionHistoryActivity : AppCompatActivity() {
     }
 
 
-
-
-
-
-    // ADDED THIS (OLD)
-    /*private fun setupViewModel(userId: Long) {
-        val database = AppDatabase.getDatabase(applicationContext)
-        val accountRepository = AccountRepository(database.accountDao(), database.userDao())
-
-        val factory = TransactionHistoryViewModelFactory(application, accountRepository, userId)
-        viewModel = ViewModelProvider(this, factory)[TransactionHistoryViewModel::class.java]
-    }*/
-
-
-
-
-    /*
-    private fun setupViewModel(userId: Long) {
-
-        val factory = TransactionHistoryViewModelFactory(application, userId)
-        viewModel = ViewModelProvider(this, factory)[TransactionHistoryViewModel::class.java]
-    }*/
-
     /**
      * Sets up the RecyclerView to display transactions.
      * Configures the adapter and sets up a click listener for viewing receipt images.
@@ -139,16 +111,20 @@ class TransactionHistoryActivity : AppCompatActivity() {
      * Sets up the UI components including toolbar, bottom navigation, date filter, and category chips.
      */
     private fun setupUI() {
-        // Setup toolbar
+        // Set up the custom toolbar without system back button
         setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false) // <-- REMOVE system back icon
+
+        // Handle your own custom back button
+        binding.btnBack.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
 
         setupBottomNavigation()
         setupDateFilter()
         setupCategoryChips()
 
-        // Setup click listeners for various UI elements
         binding.btnNotification.setOnClickListener {
             // TODO: Handle notification click
         }
@@ -161,6 +137,7 @@ class TransactionHistoryActivity : AppCompatActivity() {
             viewModel.clearDateFilter()
         }
     }
+
 
     /**
      * Sets up the bottom navigation menu.
@@ -245,14 +222,7 @@ class TransactionHistoryActivity : AppCompatActivity() {
         dateRangePicker.show(supportFragmentManager, "DATE_RANGE_PICKER")
     }
 
-    /**
-     * Observes changes in filtered transactions and updates the UI accordingly.
-     */
-    /*private fun observeTransactions() {
-        viewModel.filteredTransactions.observe(this) { transactions ->
-            transactionAdapter.submitList(transactions)
-        }
-    }*/
+
 
     /**
      * Shows a popup dialog displaying the receipt image for a transaction.
@@ -291,100 +261,3 @@ class TransactionHistoryActivity : AppCompatActivity() {
         Log.d("ImagePopup", "Dialog shown with image")
     }}
 
-
-    /*private fun showImagePopup(receiptPath: String) {
-        Log.d("ImagePopup", "Attempting to show image from path: $receiptPath")
-
-        val dialog = Dialog(this)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.setContentView(R.layout.dialog_image_popup)
-
-        val imageView = dialog.findViewById<ImageView>(R.id.popupImageView)
-
-        val file = File(receiptPath)
-        if (!file.exists()) {
-            Log.e("ImagePopup", "File does not exist: $receiptPath")
-            Toast.makeText(this, "Receipt image not found", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val uri = FileProvider.getUriForFile(
-            this,
-            "${packageName}.fileprovider",
-            file
-        )
-
-        Log.d("ImagePopup", "Created URI: $uri")
-
-        // Load the image using Glide
-        Glide.with(this)
-            .load(uri)
-            .listener(object : RequestListener<Drawable> {
-                override fun onLoadFailed(
-                    e: GlideException?,
-                    model: Any?,
-                    target: Target<Drawable>?,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    Log.e("ImagePopup", "Glide failed to load image", e)
-                    e?.logRootCauses("ImagePopup")
-                    runOnUiThread {
-                        Toast.makeText(this@TransactionHistoryActivity, "Failed to load image", Toast.LENGTH_SHORT).show()
-                    }
-                    return false
-                }
-
-                override fun onResourceReady(
-                    resource: Drawable?,
-                    model: Any?,
-                    target: Target<Drawable>?,
-                    dataSource: DataSource?,
-                    isFirstResource: Boolean
-                ): Boolean {
-                    Log.d("ImagePopup", "Glide successfully loaded image")
-                    return false
-                }
-            })
-            .into(object : com.bumptech.glide.request.target.Target<Drawable> {
-                override fun onStart() {
-                    Log.d("ImagePopup", "Glide load started")
-                }
-
-                override fun onStop() {
-                    Log.d("ImagePopup", "Glide load stopped")
-                }
-
-                override fun onDestroy() {
-                    Log.d("ImagePopup", "Glide target destroyed")
-                }
-
-                override fun onLoadStarted(placeholder: Drawable?) {
-                    Log.d("ImagePopup", "Glide load started with placeholder")
-                }
-
-                override fun onLoadFailed(errorDrawable: Drawable?) {
-                    Log.e("ImagePopup", "Glide load failed")
-                }
-
-                override fun onResourceReady(resource: Drawable, transition: com.bumptech.glide.request.transition.Transition<in Drawable>?) {
-                    Log.d("ImagePopup", "Glide resource ready")
-                    imageView.setImageDrawable(resource)
-                }
-
-                override fun onLoadCleared(placeholder: Drawable?) {
-                    Log.d("ImagePopup", "Glide load cleared")
-                }
-
-                override fun getSize(cb: com.bumptech.glide.request.target.SizeReadyCallback) {
-                    cb.onSizeReady(com.bumptech.glide.request.target.Target.SIZE_ORIGINAL, com.bumptech.glide.request.target.Target.SIZE_ORIGINAL)
-                }
-
-                override fun removeCallback(cb: com.bumptech.glide.request.target.SizeReadyCallback) {}
-                override fun setRequest(request: com.bumptech.glide.request.Request?) {}
-                override fun getRequest(): com.bumptech.glide.request.Request? = null
-            })
-
-        dialog.show()
-        Log.d("ImagePopup", "Dialog shown")
-    }
-} */
