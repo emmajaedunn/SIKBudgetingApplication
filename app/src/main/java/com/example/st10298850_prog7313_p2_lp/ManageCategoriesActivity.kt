@@ -88,7 +88,7 @@ class ManageCategoriesActivity : AppCompatActivity() {
     private fun updateTotalBudget(userId: Long) {
         lifecycleScope.launch {
             val totalBudget = database.categoryDao().getTotalBudgetForUser(userId) ?: 0.0
-            binding.tvTotalBudget.text = String.format("R%.2f", totalBudget)
+            binding.tvTotalBudget.text = formatCurrency(totalBudget)
         }
     }
 

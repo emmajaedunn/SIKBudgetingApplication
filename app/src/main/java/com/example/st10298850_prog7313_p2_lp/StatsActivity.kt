@@ -7,11 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.st10298850_prog7313_p2_lp.data.AppDatabase
 import com.example.st10298850_prog7313_p2_lp.databinding.ActivityStatsBinding
-import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieData
 import kotlinx.coroutines.launch
+import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 
 class StatsActivity : AppCompatActivity() {
 
@@ -27,12 +27,10 @@ class StatsActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        // Back button
         binding.btnBack.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        // Bottom navigation
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
@@ -57,7 +55,6 @@ class StatsActivity : AppCompatActivity() {
         }
     }
 
-
     private fun loadStatistics() {
         val userId = UserSessionManager.getUserId(this)
         if (userId == -1L) return
@@ -69,9 +66,9 @@ class StatsActivity : AppCompatActivity() {
             val expenses = dao.getTotalExpenses(userId) ?: 0.0
             val net = income - expenses
 
-            binding.tvIncome.text = String.format("R%.2f", income)
-            binding.tvExpenses.text = String.format("R%.2f", expenses)
-            binding.tvNetBalance.text = String.format("R%.2f", net)
+            binding.tvIncome.text = formatCurrency(income)
+            binding.tvExpenses.text = formatCurrency(expenses)
+            binding.tvNetBalance.text = formatCurrency(net)
 
             val entries = mutableListOf<PieEntry>()
             if (income > 0f) entries.add(PieEntry(income.toFloat(), "Income"))
