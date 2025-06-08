@@ -14,15 +14,19 @@ class AchievementsActivity : AppCompatActivity() {
         binding = ActivityAchievementsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Handle back button click
+        binding.btnBack.setOnClickListener {
+            finish() // Closes the activity and returns to the previous screen
+        }
+
         // TODO: Replace this with actual progress calculation logic
-        val userProgress = 67 // example value out of 100
+        val userProgress = 91 // example value out of 100
         updateProgress(userProgress)
     }
 
     private fun updateProgress(progress: Int) {
         binding.progressBarAchievement.progress = progress
 
-        // Level label
         val levelLabel = when {
             progress >= 90 -> "Platinum"
             progress >= 75 -> "Gold"
@@ -32,7 +36,6 @@ class AchievementsActivity : AppCompatActivity() {
         }
         binding.tvLevelLabel.text = "Level: $levelLabel"
 
-        // Unlock badges conditionally
         updateBadge(binding.badgeStarter, progress >= 0)
         updateBadge(binding.badgeBronze, progress >= 25)
         updateBadge(binding.badgeSilver, progress >= 50)

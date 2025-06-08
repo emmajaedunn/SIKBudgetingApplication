@@ -27,6 +27,12 @@ class StatsActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
+        // Back button
+        binding.btnBack.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
+        // Bottom navigation
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {
@@ -50,6 +56,7 @@ class StatsActivity : AppCompatActivity() {
             }
         }
     }
+
 
     private fun loadStatistics() {
         val userId = UserSessionManager.getUserId(this)

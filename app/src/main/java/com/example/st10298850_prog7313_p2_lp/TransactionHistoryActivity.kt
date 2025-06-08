@@ -143,6 +143,12 @@ class TransactionHistoryActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(false) // <-- REMOVE system back icon
+
+        // Handle your own custom back button
+        binding.btnBack.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
 
         setupBottomNavigation()
         setupDateFilter()
@@ -161,6 +167,7 @@ class TransactionHistoryActivity : AppCompatActivity() {
             viewModel.clearDateFilter()
         }
     }
+
 
     /**
      * Sets up the bottom navigation menu.

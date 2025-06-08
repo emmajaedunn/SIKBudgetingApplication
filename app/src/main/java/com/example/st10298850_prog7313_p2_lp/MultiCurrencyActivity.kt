@@ -25,6 +25,12 @@ class MultiCurrencyActivity : AppCompatActivity() {
         val idx = currencies.indexOfFirst { it.startsWith(savedCurrency) }
         if (idx >= 0) binding.currencySpinner.setSelection(idx)
 
+        // Handle back button
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
+
+        // Save selected currency
         binding.btnSaveCurrency.setOnClickListener {
             val selectedCurrency = currencies[binding.currencySpinner.selectedItemPosition].substring(0, 3)
             UserSessionManager.saveCurrency(this, selectedCurrency)
