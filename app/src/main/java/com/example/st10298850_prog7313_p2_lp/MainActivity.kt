@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
+        // Firebase logic
         FirebaseAuth.getInstance()
             .signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
