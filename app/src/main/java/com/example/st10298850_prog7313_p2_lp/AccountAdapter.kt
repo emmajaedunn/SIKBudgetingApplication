@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.st10298850_prog7313_p2_lp.data.Account
 import com.example.st10298850_prog7313_p2_lp.databinding.ItemAccountBinding
+import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 
 class AccountAdapter : ListAdapter<Account, AccountAdapter.AccountViewHolder>(AccountDiffCallback()) {
 
@@ -21,9 +22,18 @@ class AccountAdapter : ListAdapter<Account, AccountAdapter.AccountViewHolder>(Ac
 
     class AccountViewHolder(private val binding: ItemAccountBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(account: Account) {
+            val context = binding.root.context
+            val currencyCode = UserSessionManager.getCurrency(context)
+            val currency = java.util.Currency.getInstance(currencyCode)
+            val format = java.text.NumberFormat.getCurrencyInstance().apply {
+                this.currency = currency
+            }
+
             binding.tvAccountName.text = account.name
             binding.tvAccountType.text = account.type
-            binding.tvAccountBalance.text = account.goalAmount.toString()        }
+            binding.tvAccountBalance.text = format.format(account.goalAmount)
+        }
+
     }
 
     class AccountDiffCallback : DiffUtil.ItemCallback<Account>() {

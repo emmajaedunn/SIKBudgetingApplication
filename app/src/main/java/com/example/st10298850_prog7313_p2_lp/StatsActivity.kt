@@ -94,4 +94,13 @@ class StatsActivity : AppCompatActivity() {
             binding.pieChart.invalidate()
         }
     }
+
+    private fun formatCurrency(amount: Double): String {
+        val currencyCode = UserSessionManager.getCurrency(this)
+        val currency = java.util.Currency.getInstance(currencyCode)
+        val format = java.text.NumberFormat.getCurrencyInstance().apply {
+            this.currency = currency
+        }
+        return format.format(amount)
+    }
 }

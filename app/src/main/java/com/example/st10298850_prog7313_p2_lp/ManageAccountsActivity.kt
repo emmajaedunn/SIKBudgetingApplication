@@ -90,6 +90,10 @@ class ManageAccountsActivity : AppCompatActivity() {
         lifecycleScope.launch {
             val accounts = database.accountDao().getAccountsForUser(userId)
             accountAdapter.submitList(accounts)
+
+            // Update total balance
+            val total = accounts.sumOf { it.goalAmount }
+            binding.tvTotalBalance.text = formatCurrency(total)
         }
     }
 
@@ -132,4 +136,18 @@ class ManageAccountsActivity : AppCompatActivity() {
             loadAccounts(account.userId) // Refresh the list with the correct userId
         }
     }
+}
+            loadAccounts()
+        }
+    }
+
+    private fun formatCurrency(amount: Double): String {
+        val currencyCode = UserSessionManager.getCurrency(this)
+        val currency = java.util.Currency.getInstance(currencyCode)
+        val format = java.text.NumberFormat.getCurrencyInstance().apply {
+            this.currency = currency
+        }
+        return format.format(amount)
+    }
+
 }
