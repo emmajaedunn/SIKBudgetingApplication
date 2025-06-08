@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.st10298850_prog7313_p2_lp.databinding.ActivityTransactionHistoryBinding
-import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.example.st10298850_prog7313_p2_lp.viewmodels.TransactionHistoryViewModelFactory
@@ -16,11 +15,7 @@ import android.app.Dialog
 import android.view.Window
 import android.widget.ImageView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.request.RequestListener
-import com.bumptech.glide.request.target.Target
-import android.graphics.drawable.Drawable
+import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 import android.widget.Toast
 import java.io.File
 import androidx.core.content.FileProvider

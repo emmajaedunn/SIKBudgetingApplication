@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.st10298850_prog7313_p2_lp.data.Category
 import com.example.st10298850_prog7313_p2_lp.databinding.ItemCategoryBinding
+import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 
 class CategoryAdapter(
     private val onEditClick: (Category) -> Unit,

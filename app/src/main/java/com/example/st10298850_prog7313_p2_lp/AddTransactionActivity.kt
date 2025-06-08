@@ -29,7 +29,6 @@ import com.example.st10298850_prog7313_p2_lp.repositories.AccountRepository
 import com.example.st10298850_prog7313_p2_lp.repositories.CategoryRepository
 import com.example.st10298850_prog7313_p2_lp.repositories.TransactionRepository
 import com.example.st10298850_prog7313_p2_lp.utils.ImagePreviewUtil
-import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 import com.example.st10298850_prog7313_p2_lp.viewmodels.AddTransactionViewModel
 import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.launch
@@ -37,6 +36,7 @@ import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 
 class AddTransactionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddTransactionBinding
@@ -67,7 +67,7 @@ class AddTransactionActivity : AppCompatActivity() {
         if (result.resultCode == Activity.RESULT_OK) {
             photoUploadImage.setImageURI(photoUri)
             receiptImageUri = photoUri
-            currentReceiptPath = currentPhotoPath // From createImageFile()
+            currentReceiptPath = currentPhotoPath
             Log.d("CameraResult", "Photo URI: $photoUri, Path: $currentReceiptPath")
         } else {
             Log.e("CameraResult", "Camera capture failed or cancelled")
@@ -144,7 +144,6 @@ class AddTransactionActivity : AppCompatActivity() {
                     viewModel.loadCategoriesForUser(getCurrentUserId())
                 }
             } else {
-                // Clear old data and add fresh categories without duplicates
                 val categoryNames = categories.map { it.name }.distinct()
                 categoryAdapter.clear()
                 categoryAdapter.addAll(categoryNames)
@@ -152,7 +151,6 @@ class AddTransactionActivity : AppCompatActivity() {
             }
         }
 
-        // Observe accounts and update adapter
         viewModel.accounts.observe(this) { accounts ->
             if (accounts.isEmpty()) {
                 lifecycleScope.launch {

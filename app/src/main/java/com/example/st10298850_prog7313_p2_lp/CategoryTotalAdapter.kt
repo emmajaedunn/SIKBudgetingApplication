@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.st10298850_prog7313_p2_lp.data.CategoryTotal
 import com.example.st10298850_prog7313_p2_lp.databinding.ItemCategoryTotalBinding
+import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 
 class CategoryTotalAdapter : ListAdapter<CategoryTotal, CategoryTotalAdapter.ViewHolder>(CategoryTotalDiffCallback()) {
 

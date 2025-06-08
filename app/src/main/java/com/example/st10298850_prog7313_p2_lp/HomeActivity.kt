@@ -3,17 +3,19 @@ package com.example.st10298850_prog7313_p2_lp
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.example.st10298850_prog7313_p2_lp.data.AppDatabase
 import com.example.st10298850_prog7313_p2_lp.databinding.ActivityHomeBinding
-import com.example.st10298850_prog7313_p2_lp.repositories.AccountRepository
 import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
-import com.example.st10298850_prog7313_p2_lp.viewmodels.HomeViewModel
-import com.example.st10298850_prog7313_p2_lp.viewmodels.HomeViewModelFactory
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HomeActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var viewModel: HomeViewModel
+    private val database by lazy { AppDatabase.getDatabase(this) }
+    private var currentUserId: Long = -1L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,11 +60,5 @@ class HomeActivity : AppCompatActivity() {
         binding.btnSettings.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
-
-        // Achievement level placeholder
-        binding.tvAchievementLevel.text = "Your achievement level: [Coming Soon]"
-
-        // ***REMOVED BOTTOM NAVIGATION LOGIC***
-        // No more binding.bottomNavigation or nav bar listeners in this activity!
     }
 }

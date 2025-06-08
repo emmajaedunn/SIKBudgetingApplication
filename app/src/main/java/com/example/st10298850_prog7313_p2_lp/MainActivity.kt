@@ -13,6 +13,7 @@ import com.example.st10298850_prog7313_p2_lp.databinding.ActivityMainBinding
 import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
+import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

@@ -4,19 +4,26 @@ import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.st10298850_prog7313_p2_lp.databinding.ActivityAchievementsBinding
+import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
+import com.example.st10298850_prog7313_p2_lp.data.AppDatabase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import android.content.Intent
+
 
 class AchievementsActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityAchievementsBinding
+    private val database by lazy { AppDatabase.getDatabase(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAchievementsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Handle back button click
         binding.btnBack.setOnClickListener {
-            finish() // Closes the activity and returns to the previous screen
+            finish()
         }
 
         // TODO: Replace this with actual progress calculation logic

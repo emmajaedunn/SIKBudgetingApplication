@@ -12,8 +12,8 @@ import com.example.st10298850_prog7313_p2_lp.databinding.ActivityManageCategorie
 import com.example.st10298850_prog7313_p2_lp.databinding.DialogEditCategoryBinding
 import com.example.st10298850_prog7313_p2_lp.data.AppDatabase
 import com.example.st10298850_prog7313_p2_lp.data.Category
-import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 import kotlinx.coroutines.launch
+import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 import com.example.st10298850_prog7313_p2_lp.ManageCategoriesActivity
 
 /**
@@ -91,6 +91,7 @@ class ManageCategoriesActivity : AppCompatActivity() {
             binding.tvTotalBudget.text = String.format("R%.2f", totalBudget)
         }
     }
+
 
     /**
      * Displays a dialog for adding or editing a category.

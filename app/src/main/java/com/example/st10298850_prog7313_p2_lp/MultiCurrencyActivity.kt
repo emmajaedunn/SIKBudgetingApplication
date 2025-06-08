@@ -31,7 +31,7 @@ class MultiCurrencyActivity : AppCompatActivity() {
         val idx = currencies.indexOfFirst { it.startsWith(savedCurrency) }
         if (idx >= 0) binding.currencySpinner.setSelection(idx)
 
-        // Handle back button
+        // back button
         binding.btnBack.setOnClickListener {
             finish()
         }

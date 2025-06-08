@@ -10,11 +10,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.st10298850_prog7313_p2_lp.data.AppDatabase
 import com.example.st10298850_prog7313_p2_lp.data.BudgetGoal
 import com.example.st10298850_prog7313_p2_lp.data.BudgetGoalDao
-import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
 
 class BudgetGoalActivity : AppCompatActivity() {
 
@@ -73,7 +73,7 @@ class BudgetGoalActivity : AppCompatActivity() {
                             goalAmount = amount
                         )
                     )
-                    loadGoals() // Reload after adding
+                    loadGoals()
                 }
             }
             .setNegativeButton("Cancel", null)

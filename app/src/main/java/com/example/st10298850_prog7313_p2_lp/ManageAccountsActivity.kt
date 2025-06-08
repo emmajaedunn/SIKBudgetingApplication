@@ -133,10 +133,6 @@ class ManageAccountsActivity : AppCompatActivity() {
     private fun addAccount(account: Account) {
         lifecycleScope.launch {
             database.accountDao().insertAccount(account)
-            loadAccounts(account.userId) // Refresh the list with the correct userId
-        }
-    }
-}
             loadAccounts()
         }
     }
