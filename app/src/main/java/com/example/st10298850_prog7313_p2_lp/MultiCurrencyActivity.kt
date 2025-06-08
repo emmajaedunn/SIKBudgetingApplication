@@ -16,7 +16,13 @@ class MultiCurrencyActivity : AppCompatActivity() {
         binding = ActivityMultiCurrencyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val currencies = listOf("ZAR - South African Rand", "USD - US Dollar", "EUR - Euro", "GBP - British Pound", "NGN - Nigerian Naira")
+        val currencies = listOf(
+            "ZAR - South African Rand",
+            "USD - US Dollar",
+            "EUR - Euro",
+            "GBP - British Pound",
+            "NGN - Nigerian Naira"
+        )
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, currencies)
         binding.currencySpinner.adapter = adapter
 

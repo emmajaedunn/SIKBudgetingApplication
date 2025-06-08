@@ -45,6 +45,9 @@
         <activity android:name=".MultiCurrencyActivity"/>
         <activity android:name=".ProfileActivity" />
 
+        <!-- Broadcast Receiver for Notifications -->
+        <receiver android:name="NotificationReceiver" android:exported="true" />
+
         <!-- FileProvider -->
         <provider
             android:name="androidx.core.content.FileProvider"
