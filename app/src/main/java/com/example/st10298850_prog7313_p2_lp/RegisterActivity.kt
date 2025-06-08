@@ -59,6 +59,7 @@ class RegisterActivity : AppCompatActivity() {
                 // Check if username already exists locally
                 val existingUser = database.userDao().getUserByUsername(username)
 
+                // Registered user authentication with firebase
                 if (existingUser == null) {
                     val auth = FirebaseAuth.getInstance()
                     val firebaseDB = FirebaseDatabase.getInstance().getReference("users")
