@@ -78,7 +78,7 @@ dependencies {
     // MPAndroidChart (for PieChart in stats)
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
-    /// Firebase BoM (manages Firebase versions automatically)
+    /// Firebase BoM (manage Firebase versions automatically)
     implementation(platform("com.google.firebase:firebase-bom:33.15.0"))
 
     // Firebase Auth and Realtime Database
