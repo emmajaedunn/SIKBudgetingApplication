@@ -129,12 +129,11 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- Achievement Level Card -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/achievementCard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="16dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         app:cardCornerRadius="16dp"
@@ -151,6 +150,28 @@
             android:padding="16dp"
             android:gravity="center_horizontal">
 
+            <!-- Achievement Progress Bar -->
+            <ProgressBar
+                android:id="@+id/progressAchievement"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:max="100"
+                android:progress="0"
+                android:progressTint="@color/lightblue_color"
+                android:layout_marginBottom="12dp"/>
+
+            <!-- Badge Image -->
+            <ImageView
+                android:id="@+id/imgRecentBadge"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_marginBottom="8dp"
+                android:contentDescription="@string/recent_badge"
+                android:scaleType="centerInside"
+                android:src="@drawable/icon_badge" />
+
+            <!-- User Title -->
             <TextView
                 android:id="@+id/tvUserTitle"
                 android:layout_width="wrap_content"

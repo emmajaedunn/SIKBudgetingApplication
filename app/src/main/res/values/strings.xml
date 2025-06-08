@@ -67,4 +67,6 @@
     <string name="notifications">Notifications</string>
     <string name="help_support">Help &amp; Support</string>
     <string name="password_hash">********</string>
+    <string name="recent_badge">Recent badge earned</string>
+
 </resources>

@@ -22,35 +22,77 @@ class HomeActivity : AppCompatActivity() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        currentUserId = getCurrentUserId()
+        if (currentUserId == -1L) return
+
+        // Load user name once
+        loadUserName(currentUserId)
+
+        setupClickListeners()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Refresh achievement progress on each resume
+        if (currentUserId != -1L) {
+            lifecycleScope.launch {
+                val transactionCount = withContext(Dispatchers.IO) {
+                    database.transactionDao().getTransactionCountForUser(currentUserId)
+                }
+                val progress = (transactionCount * 25).coerceAtMost(100)
+                updateAchievementUI(progress)
+            }
+        }
+    }
+
+    private fun getCurrentUserId(): Long {
         val userId = UserSessionManager.getUserId(this)
         if (userId == -1L) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
-            return
+        }
+        return userId
+    }
+
+    private fun loadUserName(userId: Long) {
+        lifecycleScope.launch {
+            val userName = withContext(Dispatchers.IO) {
+                database.userDao().getUserById(userId)?.username ?: "User"
+            }
+            binding.tvWelcome.text = "Welcome, $userName"
+        }
+    }
+
+    private fun updateAchievementUI(progress: Int) {
+        binding.progressAchievement.progress = progress
+
+        val levelLabel = when {
+            progress >= 100 -> "Platinum"
+            progress >= 75 -> "Gold"
+            progress >= 50 -> "Silver"
+            progress >= 25 -> "Bronze"
+            else -> "Starter"
         }
 
-        val userRepository = AccountRepository(
-            AppDatabase.getDatabase(this).accountDao(),
-            AppDatabase.getDatabase(this).userDao()
-        )
-        viewModel = ViewModelProvider(
-            this,
-            HomeViewModelFactory(application, userRepository)
-        )[HomeViewModel::class.java]
+        binding.tvUserTitle.text = levelLabel
 
-        viewModel.userName.observe(this) { name ->
-            binding.tvWelcome.text = "Welcome, $name"
+        val badgeResId = when (levelLabel) {
+            "Platinum" -> R.drawable.badge_5
+            "Gold" -> R.drawable.badge_4
+            "Silver" -> R.drawable.badge_3
+            "Bronze" -> R.drawable.badge_2
+            else -> R.drawable.badge_1
         }
+        binding.imgRecentBadge.setImageResource(badgeResId)
+    }
 
-        viewModel.loadUserName(userId)
-
-        // Set click listeners for navigation buttons
+    private fun setupClickListeners() {
         binding.btnAddTransaction.setOnClickListener {
             startActivity(Intent(this, AddTransactionActivity::class.java))
         }
 
         binding.btnManageBudgets.setOnClickListener {
-            startActivity(Intent(this, TransactionHistoryActivity::class.java)) // Budget page
+            startActivity(Intent(this, TransactionHistoryActivity::class.java))
         }
 
         binding.btnAnalytics.setOnClickListener {

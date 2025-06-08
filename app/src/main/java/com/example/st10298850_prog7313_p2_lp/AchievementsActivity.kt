@@ -26,16 +26,30 @@ class AchievementsActivity : AppCompatActivity() {
             finish()
         }
 
-        // TODO: Replace this with actual progress calculation logic
-        val userProgress = 91 // example value out of 100
-        updateProgress(userProgress)
+        val userId = getCurrentUserId()
+        lifecycleScope.launch {
+            val count = withContext(Dispatchers.IO) {
+                database.transactionDao().getTransactionCountForUser(userId)
+            }
+            val progress = (count * 25).coerceAtMost(100)
+            updateProgress(progress)
+        }
+    }
+
+    private fun getCurrentUserId(): Long {
+        val userId = UserSessionManager.getUserId(this)
+        if (userId == -1L) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+        return userId
     }
 
     private fun updateProgress(progress: Int) {
         binding.progressBarAchievement.progress = progress
 
         val levelLabel = when {
-            progress >= 90 -> "Platinum"
+            progress >= 100 -> "Platinum"
             progress >= 75 -> "Gold"
             progress >= 50 -> "Silver"
             progress >= 25 -> "Bronze"
@@ -47,7 +61,7 @@ class AchievementsActivity : AppCompatActivity() {
         updateBadge(binding.badgeBronze, progress >= 25)
         updateBadge(binding.badgeSilver, progress >= 50)
         updateBadge(binding.badgeGold, progress >= 75)
-        updateBadge(binding.badgePlatinum, progress >= 90)
+        updateBadge(binding.badgePlatinum, progress >= 100)
     }
 
     private fun updateBadge(badge: ImageView, unlocked: Boolean) {

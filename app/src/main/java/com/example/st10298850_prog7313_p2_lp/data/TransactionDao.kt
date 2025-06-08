@@ -24,6 +24,9 @@ interface TransactionDao {
     @Query("SELECT SUM(amount) FROM transactions WHERE userId = :userId AND type = 'Expense'")
     suspend fun getTotalExpenses(userId: Long): Double?
 
+    @Query("SELECT COUNT(*) FROM transactions WHERE userId = :userId")
+    suspend fun getTransactionCountForUser(userId: Long): Int
+
     @Query("""
         SELECT category AS categoryName, SUM(amount) AS totalAmount, COUNT(*) AS transactionCount
         FROM transactions
