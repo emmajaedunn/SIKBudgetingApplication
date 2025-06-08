@@ -12,7 +12,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import android.content.Intent
 
-
 class AchievementsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAchievementsBinding
     private val database by lazy { AppDatabase.getDatabase(this) }
@@ -57,6 +56,9 @@ class AchievementsActivity : AppCompatActivity() {
         }
         binding.tvLevelLabel.text = "Level: $levelLabel"
 
+        // Motivation message
+        updateMotivation(progress)
+
         updateBadge(binding.badgeStarter, progress >= 0)
         updateBadge(binding.badgeBronze, progress >= 25)
         updateBadge(binding.badgeSilver, progress >= 50)
@@ -66,5 +68,16 @@ class AchievementsActivity : AppCompatActivity() {
 
     private fun updateBadge(badge: ImageView, unlocked: Boolean) {
         badge.alpha = if (unlocked) 1.0f else 0.3f
+    }
+
+    private fun updateMotivation(progress: Int) {
+        val message = when {
+            progress >= 100 -> "Amazing! You’ve reached the top level! 🎉"
+            progress >= 75 -> "Almost there! Gold is within reach!"
+            progress >= 50 -> "You’re halfway there, keep up the great work!"
+            progress >= 25 -> "Good job! Bronze badge unlocked, keep pushing!"
+            else -> "Every journey starts with a step. Keep going! 🚀"
+        }
+        binding.tvMotivation.text = message
     }
 }
