@@ -1,101 +1,156 @@
-## SIK Budgeting App - Saving Is Key
+# SIK (Saving Is Key) Budgeting Application
 
-**SIK Budgeting** is a user-friendly personal finance app designed especially for **students and young adults** looking to manage their income, expenses, and savings goals with ease. Whether you’re new to budgeting or experienced in financial planning, SIK provides a simple yet powerful environment to take full control of your finances.
+## Project Title
+**SIK Budgeting App**
+
+## Team Members
+- Bradley Bensch (ST10300512)  
+- Rubben Shisso (ST10345300)  
+- Emma Jae Dunn (ST10301125)
+
+## GitHub Repository
+https://github.com/emmajaedunn/SIKBudgetingApplication.git
+
+## YouTube Link
+https://youtu.be/J2fFkTsCvVI?si=rVIDh6t5UnH3Qxw0
+
+## Demo Login
+
+You can use the following demo credentials to explore the app:
+
+- **Email:** admin@gmail.com  
+- **Password:** AdminUser123!
 
 ---
 
 ## Overview
 
-**SIK (Saving Is Key)** Budgeting App is built to help users:
+SIK (Saving Is Key) is a mobile budgeting app tailored for students and young adults to take control of their financial habits. Built in Kotlin for Android, the app empowers users to:
 
-- Track income and expenses
-- Set and monitor savings goals
-- Understand spending patterns through visual analytics
-- Manage finances with confidence and simplicity
-
-Designed with a clean and intuitive interface, SIK is the perfect tool for building strong financial habits.
+- Track daily and recurring income/expenses  
+- Set and achieve monthly savings goals  
+- Visualise spending habits with interactive charts  
+- Store data securely via Firebase  
 
 ---
 
 ## Features
 
-- **Recurring Transactions**  
-  Automatically schedule repeating transactions like rent, subscriptions, or utility bills with reminders.
+### Core Functionality
+- **Recurring Transactions** – Automatically repeat transactions like rent or subscriptions
+- **Manual Account Management** – Track balances across multiple accounts
+- **Receipt Upload & Preview** – Attach photos of receipts to each transaction
+- **Transaction Categories** – Organise income and expenses by customisable categories
+- **Budget Goals** – Set min/max limits and track your savings progress
+- **Graphs & Reports** – View pie/bar charts of spending by category, budget tracking and achievement progress and level
+- **Firebase Integration** – Secure storage, authentication, and data syncing
 
-- **Incorporative Accounts**  
-  Link to existing bank accounts or manually manage multiple financial accounts in one place.
+### Custom Final Features
 
-- **Receipt Uploading & Previewing**  
-  Snap or upload a receipt photo for any transaction and view it within your transaction history.
+#### 1. Multi-Currency Support
+- Currency selection at registration or via settings
+- Support for ZAR, USD, and more
+- Currency preference is stored per user in Firebase
 
-- **Expense/Income Categorisation**  
-  Group transactions into categories (e.g., food, transport, income) to see where your money is going.
+#### 2. Notifications & Fax Page (Help & Support)
+- Budget alert notifications using Android's `NotificationManager`
+- Fax Page includes:
+  - App help and FAQs
+  - Contact info for support
+  - User feedback option
 
-- **Visual Graphs & Reports**  
-  Analyze financial habits through interactive bar charts, pie charts, and monthly summaries.
+---
 
-- **Transaction History & Insights**  
-  View full transaction history, with dashboards that provide spending trends and personalized insights.
+## Firebase Integration
 
-- **Manual Transactions**  
-  Easily add income or expense entries on the go.
+### Services Used
+- **Authentication** – Firebase Email/Password login
+- **Realtime Database** – Secure, structured cloud data storage
 
-- **Budget Tracker**  
-  Set spending limits, track your current budget, and get alerts as you approach your limit.
+### Firebase Setup Steps
+1. Created Firebase project  
+2. Added app package to Firebase console  
+3. Downloaded `google-services.json` to project  
+4. Enabled Email/Password auth  
+5. Set secure database rules  
 
-## Unique Features
-In addition to core budgeting functionalities, SIK Budgeting App includes three features designed to enhance user experience and help keep the user on top of their budgeting:
+---
 
-- **Multi-Currency Support**
-Easily manage transactions in multiple currencies—ideal for international students or users with multiple income sources.
+## UI Overview
 
-- **Smart Notifications**
-Stay on top of your finances with timely alerts that send notifications to remind you to add your transactions, to keep up to date with your budgeting.
+- **Login & Register** – Firebase-authenticated user management
+- **Home** – Dashboard with add transaction, transaction history, analytics and settings 
+- **Stats** – Visual analytics of money spent 
+- **Add Transaction** – Manual entry with receipt image
+- **Transaction History** – View all income and expenses 
+- **Settings**:
+- **Budget Goals** – Monthly limit settings
+- **Multi-currency** – Select your currency 
+- **Manage Accounts** – Custom add/delete account category logic
+- **Manage Categories** – Custom add/delete transaction category logic
+- **View Achievements** – Users level depending on budgeting progress
+- **Notifications** – Enable notification for updates and reminders   
+- **Help & Support** – Fax info section
+- **Sign out** – Log out of session 
 
-- **Integrated FAQ Page**
-Access a built-in Frequently Asked Questions page for quick answers to commonly asked questions.
+---
 
-## User Interface Design
-Screens Overview:
-- Welcome / Onboarding – Guide users through setup and permissions
-- Login & registration – Users will insert details to create a profile or login to their existing profile
-- Dashboard – View budget summary, latest transactions, and goals
-- Add Transaction – Manual input for income or expenses
-- Categories Manager – Manage spending/income categories
-- Budget Overview – Set monthly budgets and view remaining amounts
-- Reports & Graphs – Financial analysis through charts
-- Settings – App preferences, themes, and account options
+## Project Plan and Timeline
 
-## Project Plan
-Total Duration of the Project: 2 months and 30 day: 91 days (03/03/2025 - 02/05/2025)
+**Total Duration:** 68 days 
+**Start Date:** 03 March 2025  
+**End Date:** 08 June 2025
 
-### App Prototype Development:
+### Phases
+1. **Planning & Research**
+2. **UI Design in Figma**
+3. **Layout and Screen Creation**
+4. **Core Feature Implementation**
+5. **Firebase Configuration**
+6. **Testing & Debugging**
+7. **Deployment & Final Documentation**
 
-- Task 1: Develop project structure
-- Task 2: Build the working prototype, including all the features 
-- Task 3: Apply the layouts in our app
-- Task 4: Using the EditTest, NumberFormat and SeekBar in our app
-- Task 5: Apply the event handling the app
-- Task 6: Create the activities 
-- Task 7: Apply intent in the application 
-- Task 8: Create a local database and save it to RoomDB 
+---
 
-### Version Control with GitHub:  
+## GitHub & Version Control
 
-- Task 9: Conduct automated testing on the main functionality of our app
-- Task 10: Initialise the repository with a README file
-- Task 11: Commit and push the project file to GitHub
-- Task 12: Regularly commit and push code in the process 
-- Task 13: Create comments for the code
+- Git repo initialised with project README  
+- Code committed consistently with clear messages  
+- Branching used for testing and UI updates  
+- GitHub Actions:
+  - Automated APK build
+  - Lint and unit test jobs triggered on push
 
-The plan includes stages for:
-- Planning & Research
-- Wireframes & Mockups
-- UI Design
-- Backend Setup
-- Core Feature Implementation
-- Testing & Bug Fixing
-- Final Deployment
+---
+
+## Learning Outcomes
+
+- Kotlin and Android app architecture  
+- Firebase Authentication & Database integration  
+- Version control using Git and GitHub  
+- Real-time data sync with Firebase  
+- Using MPAndroidChart for financial graphs  
+- Custom notification development  
+- UI/UX design best practices  
+- CI/CD automation with GitHub Actions  
+- Testing on emulators and physical Android devices
+
+---
+
+## Feedback Summary from Part 2 
+
+### Highlights
+- App runs successfully on emulator and device  
+- Login, photo capture, and category features function correctly  
+- Financial graphs and filtering are implemented well  
+- Code is well-commented and structured
+
+### Areas for Improvement
+- Submit a proper demonstration video with voiceover  
+- Improve UI consistency (fonts, spacing, colours)  
+- Minor logic bugs in goal-setting feature to be reviewed
+
+---
 
 ## Conclusion
 
@@ -107,6 +162,3 @@ uploading, and visual graphs, users can gain better control over their finances.
 With proper planning and dedication, SIK Budgeting aims to empower its users
 to establish healthy financial habits and reach their savings goals with
 confidence.
-
-
-## YouTube Link: 
