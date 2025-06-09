@@ -6,8 +6,8 @@
     android:background="#F5F5F5">
 
     <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="400dp"
+        android:layout_height="800dp"
         android:fillViewport="true"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,7 +23,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="1201dp"
                 android:orientation="vertical"
                 android:padding="16dp">
 
@@ -37,17 +37,17 @@
                         android:id="@+id/btnClose"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@android:drawable/ic_menu_close_clear_cancel"
-                        android:background="?attr/selectableItemBackgroundBorderless" />
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:src="@android:drawable/ic_menu_close_clear_cancel" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
                         android:text="@string/new_transaction"
+                        android:textColor="@android:color/black"
                         android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/lightblue_color"
-                        android:layout_centerInParent="true" />
+                        android:textStyle="bold" />
                 </RelativeLayout>
 
                 <!-- Tab Layout -->
@@ -55,12 +55,14 @@
                     android:id="@+id/tabLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:tabIndicatorColor="@color/lightblue_color"
-                    app:tabSelectedTextColor="@color/lightblue_color"
-                    app:tabTextColor="#888888"
-                    app:tabMode="fixed"
+                    android:layout_marginBottom="16dp"
+                    android:backgroundTint="@color/background_color"
                     app:tabGravity="fill"
-                    android:layout_marginBottom="16dp">
+                    app:tabIconTint="@color/background_color"
+                    app:tabIndicatorColor="@color/lightblue_color"
+                    app:tabMode="fixed"
+                    app:tabSelectedTextColor="@color/lightblue_color"
+                    app:tabTextColor="#888888">
 
                     <com.google.android.material.tabs.TabItem
                         android:layout_width="wrap_content"
@@ -78,88 +80,88 @@
                     android:id="@+id/tvAmount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_amount"
-                    android:textSize="36sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/lightblue_color"
-                    android:gravity="center"
                     android:layout_marginTop="24dp"
                     android:layout_marginBottom="8dp"
+                    android:autofillHints=""
+                    android:gravity="center"
+                    android:hint="*Insert*"
                     android:inputType="numberDecimal"
-                    android:autofillHints="" />
+                    android:textColor="@color/lightblue_color"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/enter_amount"
-                    android:textSize="14sp"
+                    android:layout_marginBottom="16dp"
                     android:gravity="center"
-                    android:layout_marginBottom="16dp" />
+                    android:text="@string/enter_amount"
+                    android:textSize="14sp" />
 
                 <!-- Input Fields -->
                 <AutoCompleteTextView
                     android:id="@+id/etCategory"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:dropDownHeight="wrap_content"
                     android:hint="@string/choose_category"
                     android:inputType="none"
-                    android:padding="16dp"
-                    android:layout_marginTop="16dp"
-                    android:dropDownHeight="wrap_content" />
+                    android:padding="16dp" />
 
                 <AutoCompleteTextView
                     android:id="@+id/etAccount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:dropDownHeight="wrap_content"
                     android:hint="@string/select_account"
                     android:inputType="none"
-                    android:padding="16dp"
-                    android:layout_marginTop="16dp"
-                    android:dropDownHeight="wrap_content" />
+                    android:padding="16dp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilStartDate"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/start_date"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_marginTop="16dp">
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/start_date">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etStartDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:focusable="false"
                         android:clickable="true"
+                        android:cursorVisible="false"
+                        android:focusable="false"
                         android:focusableInTouchMode="false"
-                        android:inputType="none"
                         android:importantForAccessibility="no"
-                        android:cursorVisible="false"/>
+                        android:inputType="none" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilEndDate"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    android:layout_marginTop="16dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etEndDate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:focusable="false"
                         android:hint="@string/end_date"
-                        android:inputType="date"
-                        android:focusable="false" />
+                        android:inputType="date" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/description"
                     android:layout_marginTop="16dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    android:hint="@string/description">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etDescription"
@@ -170,11 +172,11 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/attach_receipt"
                     android:layout_marginTop="16dp"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                    android:hint="@string/attach_receipt">
 
                     <FrameLayout
                         android:layout_width="match_parent"
@@ -185,13 +187,13 @@
                             android:id="@+id/receiptImage"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/add_a_photo_ic"
-                            android:contentDescription="@string/upload_receipt"
-                            android:scaleType="centerInside"
                             android:adjustViewBounds="true"
-                            android:padding="8dp"
                             android:clickable="true"
-                            android:focusable="true"/>
+                            android:contentDescription="@string/upload_receipt"
+                            android:focusable="true"
+                            android:padding="8dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/add_a_photo_ic" />
 
                     </FrameLayout>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -201,10 +203,10 @@
                     android:id="@+id/btnAddTransaction"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/add_transaction"
-                    android:textColor="@color/white"
+                    android:layout_marginTop="24dp"
                     android:backgroundTint="@color/lightblue_color"
-                    android:layout_marginTop="24dp" />
+                    android:text="@string/add_transaction"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

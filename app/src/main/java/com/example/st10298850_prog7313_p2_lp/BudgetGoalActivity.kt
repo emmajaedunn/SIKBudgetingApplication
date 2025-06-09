@@ -12,6 +12,7 @@ import com.example.st10298850_prog7313_p2_lp.data.BudgetGoal
 import com.example.st10298850_prog7313_p2_lp.data.BudgetGoalDao
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import android.widget.ImageButton
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import com.example.st10298850_prog7313_p2_lp.utils.UserSessionManager
@@ -28,6 +29,10 @@ class BudgetGoalActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_budget_goal)
 
+        findViewById<ImageButton>(R.id.btnBack).setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
         recyclerView = findViewById(R.id.recyclerView)
         btnAddGoal = findViewById(R.id.btnAddGoal)
 
@@ -42,6 +47,7 @@ class BudgetGoalActivity : AppCompatActivity() {
 
         btnAddGoal.setOnClickListener {
             showAddGoalDialog()
+
         }
     }
 
@@ -60,7 +66,6 @@ class BudgetGoalActivity : AppCompatActivity() {
         val amountInput = dialogView.findViewById<EditText>(R.id.etGoalAmount)
 
         AlertDialog.Builder(this)
-            .setTitle("Add Budget Goal")
             .setView(dialogView)
             .setPositiveButton("Add") { _, _ ->
                 val name = nameInput.text.toString()
@@ -78,5 +83,6 @@ class BudgetGoalActivity : AppCompatActivity() {
             }
             .setNegativeButton("Cancel", null)
             .show()
+
     }
 }

@@ -85,7 +85,7 @@
                 android:layout_height="45dp"
                 android:layout_marginStart="20dp"
                 android:background="@drawable/edittext_background"
-                android:drawableStart="@drawable/mail_ic"
+                android:drawableStart="@drawable/icon_email"
                 android:hint="Enter your email"
                 android:inputType="textEmailAddress"
                 android:outlineProvider="none"

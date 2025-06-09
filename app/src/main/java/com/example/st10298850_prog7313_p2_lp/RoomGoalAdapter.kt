@@ -11,8 +11,8 @@ class RoomGoalAdapter : RecyclerView.Adapter<RoomGoalAdapter.GoalViewHolder>() {
     private var goals = listOf<BudgetGoal>()
 
     class GoalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvCategory: TextView = itemView.findViewById(R.id.tvCategory)
-        val tvTarget: TextView = itemView.findViewById(R.id.tvTargetAmount)
+        val tvCategory: TextView = itemView.findViewById(R.id.etGoalName)
+        val tvTarget: TextView = itemView.findViewById(R.id.etGoalAmount)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GoalViewHolder {

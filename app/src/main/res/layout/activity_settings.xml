@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,12 +14,10 @@
         android:layout_height="?attr/actionBarSize"
         android:layout_marginTop="48dp"
         android:background="@android:color/white"
-        android:elevation="4dp"
         android:textAlignment="textEnd"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ImageButton
             android:id="@+id/btnBack"
@@ -38,9 +37,7 @@
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="21sp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="40dp"
-            tools:layout_editor_absoluteY="18dp" />
+            android:textStyle="bold" />
 
         <ImageButton
             android:id="@+id/btnProfile"
@@ -49,11 +46,10 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:layout_gravity="start|center_vertical"
             android:src="@drawable/account_circle_ic"
-            tools:layout_editor_absoluteX="347dp"
-            tools:layout_editor_absoluteY="8dp"
             android:contentDescription="@string/profile_page" />
     </androidx.appcompat.widget.Toolbar>
 
+    <!-- Main Scrollable Content -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -66,196 +62,210 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Card with functional settings buttons -->
+            <!-- Functional Settings Buttons -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
+                app:cardCornerRadius="12dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/background_color"
+                    android:backgroundTint="@color/background_color"
                     android:orientation="vertical">
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnBudgetingGoals"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/budgeting_goals"
-                        android:textAlignment="textStart"
+                        android:backgroundTint="@color/lightblue_color"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
-                        android:backgroundTint="@color/lightblue_color"
+                        android:text="@string/budgeting_goals"
+                        android:textAlignment="textStart"
                         android:textColor="@color/white"
+                        app:cornerRadius="24dp"
                         app:icon="@drawable/target_ic"
-                        app:iconGravity="start"
-                        style="@style/Widget.MaterialComponents.Button.TextButton" />
+                        app:iconGravity="start" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnMultiCurrency"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Multi-Currency"
-                        android:textAlignment="textStart"
+                        android:backgroundTint="@color/lightblue_color"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
-                        android:backgroundTint="@color/lightblue_color"
+                        android:text="Multi-Currency"
+                        android:textAlignment="textStart"
                         android:textColor="@color/white"
+                        app:cornerRadius="24dp"
                         app:icon="@drawable/ic_currency_exchange"
-                        app:iconGravity="start"
-                        style="@style/Widget.MaterialComponents.Button.TextButton" />
+                        app:iconGravity="start" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnManageAccounts"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/manage_account"
-                        android:textAlignment="textStart"
+                        android:backgroundTint="@color/lightblue_color"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
-                        android:backgroundTint="@color/lightblue_color"
+                        android:text="@string/manage_account"
+                        android:textAlignment="textStart"
                         android:textColor="@color/white"
+                        app:cornerRadius="24dp"
                         app:icon="@drawable/wallet_ic"
-                        app:iconGravity="start"
-                        style="@style/Widget.MaterialComponents.Button.TextButton" />
+                        app:iconGravity="start" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnTransactionCategories"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/transaction_categories"
-                        android:textAlignment="textStart"
+                        android:backgroundTint="@color/lightblue_color"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
-                        android:backgroundTint="@color/lightblue_color"
+                        android:text="@string/transaction_categories"
+                        android:textAlignment="textStart"
                         android:textColor="@color/white"
+                        app:cornerRadius="24dp"
                         app:icon="@drawable/sell_ic"
-                        app:iconGravity="start"
-                        style="@style/Widget.MaterialComponents.Button.TextButton" />
+                        app:iconGravity="start" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnAchievements"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/view_achievements"
-                        android:textAlignment="textStart"
+                        android:backgroundTint="@color/lightblue_color"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
-                        android:backgroundTint="@color/lightblue_color"
+                        android:text="@string/view_achievements"
+                        android:textAlignment="textStart"
                         android:textColor="@color/white"
+                        app:cornerRadius="24dp"
                         app:icon="@drawable/icon_badge"
-                        app:iconGravity="start"
-                        style="@style/Widget.MaterialComponents.Button.TextButton" />
-                </LinearLayout>
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnViewProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="View Profile"
-                    android:textAlignment="textStart"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:backgroundTint="@color/lightblue_color"
-                    android:textColor="@color/white"
-                    app:icon="@drawable/account_circle_ic"
-                    app:iconGravity="start"
-                    style="@style/Widget.MaterialComponents.Button.TextButton" />
+                        app:iconGravity="start" />
 
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnViewProfile"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/lightblue_color"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="View Profile"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/white"
+                        app:cornerRadius="24dp"
+                        app:icon="@drawable/account_circle_ic"
+                        app:iconGravity="start" />
+                </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Card with Notifications Switch -->
+            <!-- Notifications Switch -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
+                app:cardCornerRadius="12dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/app_logo_background"
+                    android:backgroundTint="@color/app_logo_background"
                     android:orientation="horizontal"
                     android:padding="16dp">
 
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/notifications_ic"
                         android:layout_gravity="center_vertical"
-                        android:contentDescription="@string/notifications" />
+                        android:contentDescription="@string/notifications"
+                        android:src="@drawable/notifications_ic" />
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp"
                         android:layout_weight="1"
                         android:text="@string/notifications"
-                        android:textSize="16sp"
-                        android:layout_marginStart="16dp"
-                        android:layout_gravity="center_vertical" />
+                        android:textSize="16sp" />
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
                         android:id="@+id/switchNotifications"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="#955F5F"
                         android:checked="true" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Card with Help & Sign Out -->
+            <!-- Help & Sign Out -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="2dp">
+                android:background="@color/background_color"
+                app:cardCornerRadius="12dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/background_color"
                     android:orientation="vertical">
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnHelpSupport"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/help_support"
-                        android:textAlignment="textStart"
+                        android:backgroundTint="@color/lightblue_color"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
-                        android:backgroundTint="@color/lightblue_color"
+                        android:text="@string/help_support"
+                        android:textAlignment="textStart"
                         android:textColor="@color/white"
+                        app:cornerRadius="24dp"
                         app:icon="@drawable/info_2ic"
-                        app:iconGravity="start"
-                        style="@style/Widget.MaterialComponents.Button.TextButton" />
+                        app:iconGravity="start" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnSignOut"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/sign_out"
-                        android:textAlignment="textStart"
+                        android:backgroundTint="@color/lightblue_color"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
-                        android:backgroundTint="@color/lightblue_color"
+                        android:text="@string/sign_out"
+                        android:textAlignment="textStart"
                         android:textColor="@color/white"
+                        app:cornerRadius="24dp"
                         app:icon="@drawable/logout_ic"
-                        app:iconGravity="start"
-                        style="@style/Widget.MaterialComponents.Button.TextButton" />
+                        app:iconGravity="start" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
     </ScrollView>
 
+    <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@color/nav_bg"
+        app:menu="@menu/bottom_nav_menu"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/nav_bg"
-        app:menu="@menu/bottom_nav_menu" />
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+

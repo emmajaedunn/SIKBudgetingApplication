@@ -80,7 +80,6 @@
             android:minHeight="48dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
-
     <Button
         android:id="@+id/btnSaveChanges"
         android:layout_width="match_parent"

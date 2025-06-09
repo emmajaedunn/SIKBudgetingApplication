@@ -27,7 +27,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:cardCornerRadius="16dp"
-        app:cardElevation="2dp"
         android:layout_marginTop="8dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
@@ -63,7 +62,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         app:cardCornerRadius="16dp"
-        app:cardElevation="2dp"
+        app:cardElevation="0dp"
         app:layout_constraintTop_toBottomOf="@id/profileCard"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,6 +85,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="4dp"
                 app:icon="@drawable/add_ic"
+                app:cornerRadius="24dp"
                 app:iconGravity="textStart"/>
 
             <com.google.android.material.button.MaterialButton
@@ -99,6 +99,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="4dp"
                 app:icon="@drawable/history_ic"
+                app:cornerRadius="24dp"
                 app:iconGravity="textStart"/>
 
             <com.google.android.material.button.MaterialButton
@@ -112,6 +113,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="4dp"
                 app:icon="@drawable/trending_up_ic"
+                app:cornerRadius="24dp"
                 app:iconGravity="textStart"/>
 
             <com.google.android.material.button.MaterialButton
@@ -125,6 +127,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="4dp"
                 app:icon="@drawable/settings_ic"
+                app:cornerRadius="24dp"
                 app:iconGravity="textStart"/>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -137,7 +140,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         app:cardCornerRadius="16dp"
-        app:cardElevation="2dp"
+        app:cardElevation="0dp"
         app:layout_constraintTop_toBottomOf="@id/actionsCard"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

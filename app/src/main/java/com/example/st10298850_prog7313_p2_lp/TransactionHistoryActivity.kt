@@ -125,10 +125,6 @@ class TransactionHistoryActivity : AppCompatActivity() {
         setupDateFilter()
         setupCategoryChips()
 
-        binding.btnNotification.setOnClickListener {
-            // TODO: Handle notification click
-        }
-
         binding.btnSelectDateRange.setOnClickListener {
             showDateRangePicker()
         }
